@@ -31,11 +31,32 @@
     overflow-y: scroll;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    /* background-color: red; */
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    height: 5px;
+    background-color: yellow;
+}
+
 .category-element {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin: 10px;
+}
+
+.line {
+    width: 80%;
+    height: 2px;
+    margin-inline: auto;
+    background-color: red;
 }
 
 .main-content {

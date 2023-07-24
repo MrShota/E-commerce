@@ -7,8 +7,10 @@ fetch('https://dummyjson.com/products/categories')
             const categoryElement = document.createElement('div');
             categoryElement.innerText = category;
             categoryElement.classList.add('category-element');
-            categoryList.append(categoryElement);
+            const line = document.createElement('div');
+            line.classList.add('line');
+            toUpperCase(categoryElement)
+            categoryList.append(categoryElement, line);
 
         }
-        console.log(allCategory)
     });
