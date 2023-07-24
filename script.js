@@ -38,13 +38,13 @@ function renderProducts(products) {
         const productPrice = document.createElement('div');
 
         productElement.classList.add('product-element');
-        productElement.classList.add('product-img');
-        productElement.classList.add('product-title');
-        productElement.classList.add('product-price');
-        productElement.classList.add('product-description');
+        productImg.classList.add('product-img');
+        productTitle.classList.add('product-title');
+        productPrice.classList.add('product-price');
+        productDescription.classList.add('product-description');
 
         productTitle.innerText = product.title;
-        productImg.innerText = product.images[1]
+        productImg.src = product.images[0]
         productDescription.innerText = product.description;
         productPrice.innerText = '$ ' + product.price
 
