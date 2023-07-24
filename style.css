@@ -67,10 +67,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    overflow-y: scroll;
 }
 .product-element{
     width: 200px;
-    height: 200px;
+    height: 400px;
     background-color:aqua;
     margin: 5px;
+}
+.product-img{
+    width:200px;
+    height: 150px;
+    object-fit: cover;
 }
