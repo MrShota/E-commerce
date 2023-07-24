@@ -15,6 +15,7 @@
     height: 75vh;
     margin-inline: auto;
     background-color: rgb(202, 202, 206);
+    display: flex;
 }
 
 .footer {
@@ -22,8 +23,23 @@
     height: 15vh;
     background-color: cadetblue;
 }
-.categories-list{
+
+.categories-list {
     width: 20vw;
     height: 100%;
     background-color: blueviolet;
+    overflow-y: scroll;
+}
+
+.category-element {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.main-content {
+    width: 80vw;
+    height: 100%;
+    background-color: chartreuse;
 }
