@@ -22,7 +22,7 @@ function renderCategories(categories) {
 }
 
 function getProductsFromServer() {
-    fetch('https://dummyjson.com/products')
+    fetch('https://dummyjson.com/products?limit=28')
         .then(res => res.json())
         .then(allProduct => {
             renderProducts(allProduct.products)
