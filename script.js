@@ -1,5 +1,5 @@
 getCategoriesFromServer();
-getProductsFromServer();
+getProductsFromServer(12);
 
 function getCategoriesFromServer() {
     fetch('https://dummyjson.com/products/categories')
@@ -21,11 +21,12 @@ function renderCategories(categories) {
     }
 }
 
-function getProductsFromServer() {
-    fetch('https://dummyjson.com/products?limit=28')
+function getProductsFromServer(limit) {
+    fetch(`https://dummyjson.com/products?limit=${limit}`)
         .then(res => res.json())
         .then(allProduct => {
-            renderProducts(allProduct.products)
+            renderProducts(allProduct.products);
+            paging(allProduct.total, allProduct.limit);
         });
 }
 function renderProducts(products) {
@@ -52,4 +53,17 @@ function renderProducts(products) {
         productElement.append(productImg, productTitle, productPrice, productDescription);
         mainContent.append(productElement)
     }
+}
+function paging(totalCount, limit) {
+    const mainContent = document.getElementById('main-content')
+    for (let i = 0; i < totalCount / limit; i++) {
+        const paging = document.createElement('div');
+        paging.classList.add('paging')
+        paging.innerText = i + 1;
+        mainContent.append(paging);
+
+    }
+
+
+
 }
