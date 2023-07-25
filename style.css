@@ -134,3 +134,7 @@
     display: flex;
     justify-content: space-evenly;
 }
+.pagingElement{
+    width: 20px;
+    text-align: center;
+}

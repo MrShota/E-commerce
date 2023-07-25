@@ -1,5 +1,5 @@
 getCategoriesFromServer();
-getProductsFromServer(12);
+getProductsFromServer(12, 0);
 
 function getCategoriesFromServer() {
     fetch('https://dummyjson.com/products/categories')
@@ -21,8 +21,8 @@ function renderCategories(categories) {
     }
 }
 
-function getProductsFromServer(limit) {
-    fetch(`https://dummyjson.com/products?limit=${limit}`)
+function getProductsFromServer(limit, skip) {
+    fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
         .then(res => res.json())
         .then(allProduct => {
             renderProducts(allProduct.products);
@@ -55,18 +55,28 @@ function renderProducts(products) {
     }
 }
 function paging(totalCount, limit) {
-    const mainContent = document.getElementById('main-content')
+    const mainContent = document.getElementById('main-content');
     const paging = document.createElement('div');
     paging.classList.add('paging')
     for (let i = 0; i < totalCount / limit; i++) {
         const pagingElement = document.createElement('div');
         pagingElement.classList.add('pagingElement')
-        pagingElement.innerText = i + 1;
+        const pageIndex = i + 1
+        pagingElement.innerText = pageIndex;
         paging.append(pagingElement)
         mainContent.append(paging);
 
+
+        pagingElement.addEventListener('click', () => {
+            handlePage(pageIndex, limit)
+
+        })
     }
+}
 
-
-
+function handlePage(pageIndex, limit) {
+    const mainContent = document.getElementById('main-content');
+    mainContent.innerText='';
+    const skip = (pageIndex - 1) * limit
+    getProductsFromServer(limit, skip)
 }
