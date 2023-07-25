@@ -56,10 +56,13 @@ function renderProducts(products) {
 }
 function paging(totalCount, limit) {
     const mainContent = document.getElementById('main-content')
+    const paging = document.createElement('div');
+    paging.classList.add('paging')
     for (let i = 0; i < totalCount / limit; i++) {
-        const paging = document.createElement('div');
-        paging.classList.add('paging')
-        paging.innerText = i + 1;
+        const pagingElement = document.createElement('div');
+        pagingElement.classList.add('pagingElement')
+        pagingElement.innerText = i + 1;
+        paging.append(pagingElement)
         mainContent.append(paging);
 
     }

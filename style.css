@@ -35,7 +35,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color:#ECC1B2 ;
+    color: #ECC1B2;
     font-size: 1.2rem;
     background-color: #656c71;
 }
@@ -45,7 +45,6 @@
     margin-inline: auto;
     background-color: #656c71;
     border-radius: 8px;
-
     display: flex;
 }
 
@@ -128,5 +127,10 @@
 .product-description {
     font-style: italic;
     padding: 10px;
-
+}
+.paging{
+    width: 90%;
+    height: 20px;
+    display: flex;
+    justify-content: space-evenly;
 }
