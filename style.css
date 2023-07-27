@@ -128,22 +128,35 @@
     font-style: italic;
     padding: 10px;
 }
-.paging{
+
+.paging {
     width: 90%;
     height: 20px;
     display: flex;
     justify-content: space-evenly;
 }
-.pagingElement{
+
+.pagingElement {
     width: 20px;
     text-align: center;
 }
 
 
 
-.footer{
+.footer {
     color: aliceblue;
 }
-.madeWith span{
+
+.madeWith span {
+    color: aqua;
+}
+
+.social>* {
+    font-size: 1.3rem;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.social>*:hover {
     color: aqua;
 }
