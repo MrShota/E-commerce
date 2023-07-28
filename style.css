@@ -50,6 +50,15 @@
     background-color: transparent;
     cursor: pointer;
 }
+.btn-cart:before{
+    content: '1';
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    font-size: .6rem;
+    top: 2px;
+    right: 180px;
+}
 
 .aside {
     display: flex;
