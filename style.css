@@ -19,7 +19,6 @@
 }
 
 .search {
-    /* width: 200px; */
     height: 30px;
     border-radius: 8px;
     border: none;
@@ -37,6 +36,19 @@
     background-color: rgb(173, 186, 198);
     color: aliceblue;
     font-size: .9rem;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+.btn-cart{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .aside {
