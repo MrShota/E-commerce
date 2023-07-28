@@ -18,6 +18,27 @@
     align-items: center;
 }
 
+.search {
+    /* width: 200px; */
+    height: 30px;
+    border-radius: 8px;
+    border: none;
+    padding-inline: 5px;
+    outline: none;
+}
+
+.btn-search {
+    height: 30px;
+    width: 70px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: capitalize;
+    background-color: rgb(173, 186, 198);
+    color: aliceblue;
+    font-size: .9rem;
+}
+
 .aside {
     display: flex;
     flex-direction: column;
