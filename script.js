@@ -60,10 +60,10 @@ function paging(totalCount, limit) {
     paging.classList.add('paging')
     for (let i = 0; i < totalCount / limit; i++) {
         const pagingElement = document.createElement('div');
-        pagingElement.classList.add('pagingElement')
-        const pageIndex = i + 1
+        pagingElement.classList.add('pagingElement');
+        const pageIndex = i + 1;
         pagingElement.innerText = pageIndex;
-        paging.append(pagingElement)
+        paging.append(pagingElement);
         mainContent.append(paging); 
   
 

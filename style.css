@@ -74,7 +74,7 @@
 .forAds {
     margin-top: 50px;
     width: 90%;
-    height: 370px;
+    height:50% ;
     margin-inline: auto;
     border-radius: 8px;
     display: flex;
@@ -91,6 +91,9 @@
     background-color: #656c71;
     border-radius: 8px;
     display: flex;
+}
+.pagingElement{
+    cursor: pointer;
 }
 
 .footer {
