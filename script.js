@@ -64,8 +64,8 @@ function paging(totalCount, limit) {
         const pageIndex = i + 1
         pagingElement.innerText = pageIndex;
         paging.append(pagingElement)
-        mainContent.append(paging);
-
+        mainContent.append(paging); 
+  
 
         pagingElement.addEventListener('click', () => {
             handlePage(pageIndex, limit)
