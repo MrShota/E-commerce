@@ -17,10 +17,12 @@
     justify-content: space-around;
     align-items: center;
 }
-.img-logo{
-    width:45px;
+
+.img-logo {
+    width: 45px;
     height: 45px;
 }
+
 .search {
     height: 30px;
     border-radius: 8px;
@@ -43,17 +45,19 @@
 
 .material-symbols-outlined {
     font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
 }
-.btn-cart{
+
+.btn-cart {
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
-.btn-cart:before{
+
+.btn-cart:before {
     content: '1';
     width: 3px;
     height: 3px;
@@ -74,7 +78,7 @@
 .forAds {
     margin-top: 50px;
     width: 90%;
-    height:50% ;
+    height: 50%;
     margin-inline: auto;
     border-radius: 8px;
     display: flex;
@@ -92,7 +96,8 @@
     border-radius: 8px;
     display: flex;
 }
-.pagingElement{
+
+.pagingElement {
     cursor: pointer;
 }
 
@@ -149,7 +154,7 @@
 
 .product-element {
     width: 210px;
-    /* height: auto; */
+    height: 520px;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -160,14 +165,20 @@
     border-radius: 8px;
 }
 
+.product-img {
+    width: 100%;
+    height: 50%;
+    object-fit:fill;
+}
+
 .product-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     padding: 10px;
 }
 
 .product-price {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
     padding-left: 10px;
 }
