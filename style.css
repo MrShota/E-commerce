@@ -153,7 +153,7 @@
 }
 
 .product-element {
-    width: 210px;
+    width: 20%;
     height: 520px;
     display: flex;
     flex-direction: column;
