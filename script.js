@@ -113,7 +113,6 @@ function openCart() {
     mainContent.append(cartContent)
 }
 function addProductToCart(title, price) {
-    
-    cartProductName.innerText = title;
+        cartProductName.innerText = title;
     cartProductPrice.innerText = price
 }
