@@ -1,4 +1,3 @@
-const mainContent = document.getElementById('mainContent')
 const btnCart = document.getElementById('btnCart');
 getCategoriesFromServer();
 getProductsFromServer(12, 0);
@@ -68,6 +67,7 @@ function paging(totalCount, limit) {
     const paging = document.createElement('div');
     paging.classList.add('paging')
     for (let i = 0; i < totalCount / limit; i++) {
+        
         const pagingElement = document.createElement('div');
         pagingElement.classList.add('pagingElement');
         const pageIndex = i + 1;
@@ -90,29 +90,31 @@ function handlePage(pageIndex, limit) {
     getProductsFromServer(limit, skip)
 }
 
-btnCart.addEventListener('mouseenter', () => {
-    openCart()
-});
-
-const cartProductName = document.createElement('div');
-const cartProductPrice = document.createElement('div');
-function openCart() {
+btnCart.addEventListener('click', () => {
     const cartContent = document.createElement('div');
+    singleProduct.classList.add('single-product');
+    cartContent.append(singleProduct)
+    
+    cartContent.classList.add('cart-content')
+    // alert('works')
+});
+const singleProduct = document.createElement('div')
 
-    const cartProduct = document.createElement('div')
+function addProductToCart(title, price) {
+    const cartProductName = document.createElement('div');
+    const cartProductPrice = document.createElement('div');
     const cartProductDelete = document.createElement('button');
 
-    cartProductDelete.innerText = 'X'
+    cartProductName.innerText = title;
+    cartProductPrice.innerText = price;
+    cartProductDelete.innerText = 'X';
 
-    cartContent.classList.add('cart-content')
-    cartProduct.classList.add('cart-product')
+    cartProductName.classList.add('cart-name');
+    cartProductPrice.classList.add('cart-price');
+    cartProductDelete.classList.add('btn-delete');
 
-    cartProduct.append(cartProductName, cartProductPrice, cartProductDelete)
-    cartContent.append(cartProduct)
+    singleProduct.append(cartProductName, cartProductPrice, cartProductDelete)
+    // cartContent.append(cartProduct)
 
-    mainContent.append(cartContent)
-}
-function addProductToCart(title, price) {
-        cartProductName.innerText = title;
-    cartProductPrice.innerText = price
+
 }
