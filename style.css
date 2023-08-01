@@ -74,6 +74,7 @@
     background-color: blueviolet;
     border-radius: 8px;
     margin: 10px;
+    padding-top: 10px;
 }
 
 .forAds {
@@ -101,6 +102,7 @@
 .pagingElement {
     cursor: pointer;
 }
+
 
 .footer {
     width: 100%;
@@ -166,10 +168,21 @@
     border-radius: 8px;
 }
 
+.add-btn {
+    width: 90px;
+    height: 30px;
+    background-color: rgb(162, 114, 114);
+    color: antiquewhite;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 60%;
+}
+
 .product-img {
     width: 100%;
     height: 50%;
-    object-fit:fill;
+    object-fit: fill;
 }
 
 .product-title {

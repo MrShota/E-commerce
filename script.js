@@ -37,20 +37,23 @@ function renderProducts(products) {
         const productImg = document.createElement('img');
         const productDescription = document.createElement('div');
         const productPrice = document.createElement('div');
+        const addBtn = document.createElement('button');
 
         productElement.classList.add('product-element');
         productImg.classList.add('product-img');
         productTitle.classList.add('product-title');
         productPrice.classList.add('product-price');
         productDescription.classList.add('product-description');
+        addBtn.classList.add('add-btn');
 
         productTitle.innerText = product.title;
         productImg.src = product.images[0]
         productDescription.innerText = product.description;
         productPrice.innerText = '$ ' + product.price
+        addBtn.innerText='Add to Cart'
 
 
-        productElement.append(productImg, productTitle, productPrice, productDescription);
+        productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
         mainContent.append(productElement)
     }
 }
@@ -64,8 +67,8 @@ function paging(totalCount, limit) {
         const pageIndex = i + 1;
         pagingElement.innerText = pageIndex;
         paging.append(pagingElement);
-        mainContent.append(paging); 
-  
+        mainContent.append(paging);
+
 
         pagingElement.addEventListener('click', () => {
             handlePage(pageIndex, limit)
@@ -76,7 +79,7 @@ function paging(totalCount, limit) {
 
 function handlePage(pageIndex, limit) {
     const mainContent = document.getElementById('main-content');
-    mainContent.innerText='';
+    mainContent.innerText = '';
     const skip = (pageIndex - 1) * limit
     getProductsFromServer(limit, skip)
 }
