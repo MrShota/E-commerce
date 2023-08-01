@@ -1,4 +1,4 @@
-const mainContent = document.getElementById('main-content')
+const mainContent = document.getElementById('mainContent')
 const btnCart = document.getElementById('btnCart');
 getCategoriesFromServer();
 getProductsFromServer(12, 0);
@@ -90,20 +90,30 @@ function handlePage(pageIndex, limit) {
     getProductsFromServer(limit, skip)
 }
 
-btnCart.addEventListener('click', openCart);
+btnCart.addEventListener('mouseenter', () => {
+    openCart()
+});
 
-const cart = document.createElement('div');
-function addProductToCart(title, price) {
-    const cartProductName = document.createElement('div');
-    const cartProductPrice = document.createElement('div');
-    cartProductName.innerText = title;
-    cartProductPrice.innerText = price;
-    cart.append(cartProductName, cartProductPrice)
-    // console.log(cartProductName.innerText, cartProductPrice.innerText)
-
-
-}
+const cartProductName = document.createElement('div');
+const cartProductPrice = document.createElement('div');
 function openCart() {
-    mainContent.innerText = cart.innerText;
-    console.log(cart.innerText)
+    const cartContent = document.createElement('div');
+
+    const cartProduct = document.createElement('div')
+    const cartProductDelete = document.createElement('button');
+
+    cartProductDelete.innerText = 'X'
+
+    cartContent.classList.add('cart-content')
+    cartProduct.classList.add('cart-product')
+
+    cartProduct.append(cartProductName, cartProductPrice, cartProductDelete)
+    cartContent.append(cartProduct)
+
+    mainContent.append(cartContent)
+}
+function addProductToCart(title, price) {
+    
+    cartProductName.innerText = title;
+    cartProductPrice.innerText = price
 }
