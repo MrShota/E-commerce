@@ -1,5 +1,8 @@
+const mainContent = document.getElementById('main-content')
+const btnCart = document.getElementById('btnCart');
 getCategoriesFromServer();
 getProductsFromServer(12, 0);
+
 
 function getCategoriesFromServer() {
     fetch('https://dummyjson.com/products/categories')
@@ -30,7 +33,6 @@ function getProductsFromServer(limit, skip) {
         });
 }
 function renderProducts(products) {
-    const mainContent = document.getElementById('main-content')
     for (let product of products) {
         const productElement = document.createElement('div');
         const productTitle = document.createElement('div');
@@ -50,7 +52,11 @@ function renderProducts(products) {
         productImg.src = product.images[0]
         productDescription.innerText = product.description;
         productPrice.innerText = '$ ' + product.price
-        addBtn.innerText='Add to Cart'
+        addBtn.innerText = 'Add to Cart'
+
+        addBtn.addEventListener('click', () => {
+            addProductToCart(productTitle.innerText, productPrice.innerText)
+        })
 
 
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
@@ -82,4 +88,22 @@ function handlePage(pageIndex, limit) {
     mainContent.innerText = '';
     const skip = (pageIndex - 1) * limit
     getProductsFromServer(limit, skip)
+}
+
+btnCart.addEventListener('click', openCart);
+
+const cart = document.createElement('div');
+function addProductToCart(title, price) {
+    const cartProductName = document.createElement('div');
+    const cartProductPrice = document.createElement('div');
+    cartProductName.innerText = title;
+    cartProductPrice.innerText = price;
+    cart.append(cartProductName, cartProductPrice)
+    // console.log(cartProductName.innerText, cartProductPrice.innerText)
+
+
+}
+function openCart() {
+    mainContent.innerText = cart.innerText;
+    console.log(cart.innerText)
 }

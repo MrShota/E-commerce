@@ -233,3 +233,10 @@
 .social>*:hover {
     color: aqua;
 }
+
+.cart-content{
+    width: 80%;
+    height: 100px;
+    margin-top: 50px;
+    background-color: red;
+}
