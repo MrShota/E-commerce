@@ -113,6 +113,4 @@ function addProductToCart(title, price) {
 
     singleProduct.append(cartProductName, cartProductPrice, cartProductDelete)
     // cartContent.append(cartProduct)
-
-
 }
