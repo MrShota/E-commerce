@@ -56,8 +56,6 @@ function renderProducts(products) {
         addBtn.addEventListener('click', () => {
             addProductToCart(productTitle.innerText, productPrice.innerText)
         })
-
-
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
         mainContent.append(productElement)
     }
