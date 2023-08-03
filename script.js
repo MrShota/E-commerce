@@ -17,7 +17,14 @@ function renderCartBox(title, price) {
 
     cartBoxTitle.innerText = title;
     cartBoxPrice.innerText = price;
-    cartBoxDelete.innerText='X'
+    cartBoxDelete.innerText = 'X'
+
+    cartBoxDelete.addEventListener('click', () => {
+        cartBoxTitle.innerText = '';
+        cartBoxPrice.innerText = '';
+        cartBoxDelete.innerText = '';
+
+    })
 
     cartBox.append(cartBoxTitle, cartBoxPrice, cartBoxDelete)
     mainContent.append(cartBox)
@@ -77,7 +84,6 @@ function renderProducts(products) {
         addBtn.addEventListener('click', () => {
             addItemToCart(productTitle.innerText, productPrice.innerText)
         })
-
 
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
         mainContent.append(productElement)
