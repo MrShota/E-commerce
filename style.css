@@ -242,6 +242,7 @@
     top: 35px;
     right: 150px;
     display: flex;
+    flex-wrap: wrap;
     padding: 7px;
     /* color: white; */
 
@@ -266,4 +267,27 @@
     width: 10%;
     height: 20px;
     text-align: center;
+}
+
+.cart-box-footer {
+    display: flex;
+    width: 40%;
+    height: 30px;
+    margin-left: 60%;
+    align-items: center;
+    margin-top: 15%;
+}
+
+.cart-box-footer-total {
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    padding: auto;
+}
+
+.cart-box-footer-btn {
+    width: 60px;
+    height: 30px;
+    background-color: green;
+    border: none;
 }

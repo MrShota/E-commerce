@@ -3,32 +3,6 @@ const btnCart = document.getElementById('btnCart');
 getCategoriesFromServer();
 getProductsFromServer(12, 0);
 
-function renderCartBox(title, price) {
-
-    const cartBox = document.createElement('div');
-    const cartBoxTitle = document.createElement('div');
-    const cartBoxPrice = document.createElement('div');
-    const cartBoxDelete = document.createElement('div');
-
-    cartBox.classList.add('cart-box');
-    cartBoxTitle.classList.add('cart-box-title');
-    cartBoxPrice.classList.add('cart-box-price');
-    cartBoxDelete.classList.add('cart-box-delete');
-
-    cartBoxTitle.innerText = title;
-    cartBoxPrice.innerText = price;
-    cartBoxDelete.innerText = 'X'
-
-    cartBoxDelete.addEventListener('click', () => {
-        cartBoxTitle.innerText = '';
-        cartBoxPrice.innerText = '';
-        cartBoxDelete.innerText = '';
-
-    })
-
-    cartBox.append(cartBoxTitle, cartBoxPrice, cartBoxDelete)
-    mainContent.append(cartBox)
-}
 function getCategoriesFromServer() {
     fetch('https://dummyjson.com/products/categories')
         .then(res => res.json())
@@ -44,7 +18,6 @@ function renderCategories(categories) {
         categoryElement.classList.add('category-element');
         const line = document.createElement('div');
         line.classList.add('line');
-        // toUpperCase(categoryElement)
         categoryList.append(categoryElement, line);
     }
 }
@@ -118,10 +91,51 @@ function handlePage(pageIndex, limit) {
 
 function addItemToCart(title, price) {
     console.log(title, price)
+
+
     renderCartBox(title, price);
+}
 
-    // cartBoxTitle.innerText = title;
-    // cartBoxPrice.innerText = price;
-    // cartBoxDelete.innerText = 'X'
+function renderCartBox(title, price) {
 
+    const cartBox = document.createElement('div');
+    const cartBoxTitle = document.createElement('div');
+    const cartBoxPrice = document.createElement('div');
+    const cartBoxDelete = document.createElement('div');
+    const cartBoxFooter = document.createElement('div');
+    const cartBoxFooterText = document.createElement('div');
+    const cartBoxFooterTotal = document.createElement('div');
+    const cartBoxFooterBtn = document.createElement('button');
+
+
+
+
+    cartBox.classList.add('cart-box');
+    cartBoxTitle.classList.add('cart-box-title');
+    cartBoxPrice.classList.add('cart-box-price');
+    cartBoxDelete.classList.add('cart-box-delete');
+    cartBoxFooter.classList.add('cart-box-footer');
+    cartBoxFooterText.classList.add('cart-box-footer-text');
+    cartBoxFooterTotal.classList.add('cart-box-footer-total')
+    cartBoxFooterBtn.classList.add('cart-box-footer-btn');
+
+    cartBoxTitle.innerText = title;
+    cartBoxPrice.innerText = price;
+    cartBoxDelete.innerText = 'X'
+    cartBoxFooterText.innerText = 'Total:';
+    cartBoxFooterTotal.innerText = price;
+    cartBoxFooterBtn.innerText = 'Pay now'
+
+    cartBoxDelete.addEventListener('click', () => {
+        cartBoxTitle.innerText = '';
+        cartBoxPrice.innerText = '';
+        cartBoxDelete.innerText = '';
+        cartBoxFooterTotal.innerText = '';
+
+
+    })
+
+    cartBox.append(cartBoxTitle, cartBoxPrice, cartBoxDelete, cartBoxFooter)
+    cartBoxFooter.append(cartBoxFooterText, cartBoxFooterTotal, cartBoxFooterBtn)
+    mainContent.append(cartBox)
 }
