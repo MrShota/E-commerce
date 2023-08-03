@@ -3,7 +3,25 @@ const btnCart = document.getElementById('btnCart');
 getCategoriesFromServer();
 getProductsFromServer(12, 0);
 
+function renderCartBox(title, price) {
 
+    const cartBox = document.createElement('div');
+    const cartBoxTitle = document.createElement('div');
+    const cartBoxPrice = document.createElement('div');
+    const cartBoxDelete = document.createElement('div');
+
+    cartBox.classList.add('cart-box');
+    cartBoxTitle.classList.add('cart-box-title');
+    cartBoxPrice.classList.add('cart-box-price');
+    cartBoxDelete.classList.add('cart-box-delete');
+
+    cartBoxTitle.innerText = title;
+    cartBoxPrice.innerText = price;
+    cartBoxDelete.innerText='X'
+
+    cartBox.append(cartBoxTitle, cartBoxPrice, cartBoxDelete)
+    mainContent.append(cartBox)
+}
 function getCategoriesFromServer() {
     fetch('https://dummyjson.com/products/categories')
         .then(res => res.json())
@@ -34,9 +52,6 @@ function getProductsFromServer(limit, skip) {
 }
 function renderProducts(products) {
 
-    const cartBox = document.createElement('div');
-    cartBox.classList.add('cart-box');
-    mainContent.append(cartBox)
 
     for (let product of products) {
         const productElement = document.createElement('div');
@@ -60,7 +75,7 @@ function renderProducts(products) {
         addBtn.innerText = 'Add to Cart'
 
         addBtn.addEventListener('click', () => {
-            console.log('works')
+            addItemToCart(productTitle.innerText, productPrice.innerText)
         })
 
 
@@ -95,3 +110,12 @@ function handlePage(pageIndex, limit) {
     getProductsFromServer(limit, skip)
 }
 
+function addItemToCart(title, price) {
+    console.log(title, price)
+    renderCartBox(title, price);
+
+    // cartBoxTitle.innerText = title;
+    // cartBoxPrice.innerText = price;
+    // cartBoxDelete.innerText = 'X'
+
+}

@@ -234,12 +234,36 @@
     color: aqua;
 }
 
-.cart-box{
-    width: 250px;
+.cart-box {
+    width: 400px;
     height: 130px;
     background-color: red;
     position: absolute;
     top: 35px;
     right: 150px;
+    display: flex;
+    padding: 7px;
+    /* color: white; */
 
+
+}
+
+.cart-box-title {
+    width: 70%;
+    height: 20px;
+    text-align: center;
+
+}
+
+.cart-box-price {
+    width: 20%;
+    height: 20px;
+    text-align: center;
+
+}
+
+.cart-box-delete {
+    width: 10%;
+    height: 20px;
+    text-align: center;
 }
