@@ -234,20 +234,12 @@
     color: aqua;
 }
 
-.cart-content{
-    width: 20%;
-    height: 200px;
-    margin-top: 50px;
+.cart-box{
+    width: 250px;
+    height: 130px;
     background-color: red;
     position: absolute;
-    top: 0px;
-    right: 95px;
-    
-}
-.single-product{
-    width: 90%;
-    height: 30px;
-    display: flex;
-    border: 1px solid green;
-    margin: 5px auto;
+    top: 35px;
+    right: 150px;
+
 }
