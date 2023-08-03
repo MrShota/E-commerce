@@ -90,10 +90,8 @@ function handlePage(pageIndex, limit) {
 }
 
 function addItemToCart(title, price) {
-    console.log(title, price)
-
-
     renderCartBox(title, price);
+
 }
 
 function renderCartBox(title, price) {
@@ -107,9 +105,6 @@ function renderCartBox(title, price) {
     const cartBoxFooterTotal = document.createElement('div');
     const cartBoxFooterBtn = document.createElement('button');
 
-
-
-
     cartBox.classList.add('cart-box');
     cartBoxTitle.classList.add('cart-box-title');
     cartBoxPrice.classList.add('cart-box-price');
@@ -121,9 +116,9 @@ function renderCartBox(title, price) {
 
     cartBoxTitle.innerText = title;
     cartBoxPrice.innerText = price;
+    cartBoxFooterTotal.innerText = price;
     cartBoxDelete.innerText = 'X'
     cartBoxFooterText.innerText = 'Total:';
-    cartBoxFooterTotal.innerText = price;
     cartBoxFooterBtn.innerText = 'Pay now'
 
     cartBoxDelete.addEventListener('click', () => {

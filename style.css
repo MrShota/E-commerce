@@ -267,6 +267,7 @@
     width: 10%;
     height: 20px;
     text-align: center;
+    cursor:pointer
 }
 
 .cart-box-footer {
