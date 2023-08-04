@@ -57,14 +57,14 @@
     cursor: pointer;
 }
 
-.btn-cart:before {
-    content: '1';
+#itemInCart{
+    content: '11';
     width: 3px;
     height: 3px;
     position: absolute;
     font-size: .6rem;
     top: 2px;
-    right: 180px;
+    right: 275px;
 }
 
 .aside {

@@ -117,10 +117,15 @@ function addItemToCart(title, price) {
     const cart = document.getElementById('cart');
     cart.prepend(cartBox)
 
+    const itemInCart = document.getElementById('itemInCart')
+    itemInCart.innerText = cart.children.length-1;
+
     calculateTotalPrice(cartBoxPrice, price)
 }
 function calculateTotalPrice(cartBoxPrice, price) {
     const cartBoxFooterText = document.getElementById('cartBoxFooterText');
+
+    
     if (cart.children.length === 2) {
         cartBoxFooterText.innerText = price;
 
@@ -150,11 +155,11 @@ btnCart.addEventListener('mouseleave', () => {
     cart.style.display = 'none'
 })
 const cart = document.getElementById('cart');
-cart.addEventListener('mouseenter',()=>{
+cart.addEventListener('mouseenter', () => {
     const cart = document.getElementById('cart');
     cart.style.display = 'block'
 })
-cart.addEventListener('mouseleave',()=>{
+cart.addEventListener('mouseleave', () => {
     const cart = document.getElementById('cart');
     cart.style.display = 'none'
 })
