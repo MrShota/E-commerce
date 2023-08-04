@@ -89,30 +89,16 @@ function handlePage(pageIndex, limit) {
     getProductsFromServer(limit, skip)
 }
 
-function addItemToCart(title, price) {
-    renderCartBox(title, price);
+function renderCartBox() {
+    const cartBox = document.getElementById(cartBox);
+    const cartBoxTitle = document.getElementById(cartBoxTitle);
+    const cartBoxPrice = document.getElementById(cartBoxPrice);
+    const cartBoxDelete = document.getElementById(cartBoxDelete);
+    const cartBoxFooter = document.getElementById(cartBoxFooter);
+    const cartBoxFooterText = document.getElementById(cartBoxFooterText);
+    const cartBoxFooterTotal = document.getElementById(cartBoxFooterTotal);
+    const cartBoxFooterBtn = document.getElementById(cartBoxFooterBtn)
 
-}
-
-function renderCartBox(title, price) {
-
-    const cartBox = document.createElement('div');
-    const cartBoxTitle = document.createElement('div');
-    const cartBoxPrice = document.createElement('div');
-    const cartBoxDelete = document.createElement('div');
-    const cartBoxFooter = document.createElement('div');
-    const cartBoxFooterText = document.createElement('div');
-    const cartBoxFooterTotal = document.createElement('div');
-    const cartBoxFooterBtn = document.createElement('button');
-
-    cartBox.classList.add('cart-box');
-    cartBoxTitle.classList.add('cart-box-title');
-    cartBoxPrice.classList.add('cart-box-price');
-    cartBoxDelete.classList.add('cart-box-delete');
-    cartBoxFooter.classList.add('cart-box-footer');
-    cartBoxFooterText.classList.add('cart-box-footer-text');
-    cartBoxFooterTotal.classList.add('cart-box-footer-total')
-    cartBoxFooterBtn.classList.add('cart-box-footer-btn');
 
     cartBoxTitle.innerText = title;
     cartBoxPrice.innerText = price;
@@ -121,16 +107,4 @@ function renderCartBox(title, price) {
     cartBoxFooterText.innerText = 'Total:';
     cartBoxFooterBtn.innerText = 'Pay now'
 
-    cartBoxDelete.addEventListener('click', () => {
-        cartBoxTitle.innerText = '';
-        cartBoxPrice.innerText = '';
-        cartBoxDelete.innerText = '';
-        cartBoxFooterTotal.innerText = '';
-
-
-    })
-
-    cartBox.append(cartBoxTitle, cartBoxPrice, cartBoxDelete, cartBoxFooter)
-    cartBoxFooter.append(cartBoxFooterText, cartBoxFooterTotal, cartBoxFooterBtn)
-    mainContent.append(cartBox)
 }
