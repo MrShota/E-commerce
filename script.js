@@ -105,16 +105,27 @@ function addItemToCart(title, price) {
     cartBoxTitle.innerText = title;
     cartBoxPrice.innerText = price;
     cartBoxDelete.innerText = 'X'
+
     cartBoxDelete.addEventListener('click', () => {
         cartBox.remove();
         cartBoxFooterText.innerText = '';
 
     })
 
-    const cartBoxFooterText = document.getElementById('cartBoxFooterText');
-    cartBoxFooterText.innerText = price;
+    
+    // const cartBoxFooterText = document.getElementById('cartBoxFooterText');
+    // cartBoxFooterText.innerText = ;
     cartBox.append(cartBoxTitle, cartBoxPrice, cartBoxDelete)
     const cart = document.getElementById('cart');
     cart.prepend(cartBox)
+    
+    calculateTotalPrice(cart.cartBox)
+}
+function calculateTotalPrice(prices) {
+    for (let price of prices) {
+       const total= price + price
+       console.log(total)
+    }
+
 
 }
