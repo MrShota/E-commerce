@@ -104,10 +104,12 @@ function addItemToCart(title, price) {
     cartBoxTitle.innerText = title;
     cartBoxPrice.innerText = price;
     cartBoxDelete.innerText = 'X'
-
+    const itemInCart = document.getElementById('itemInCart')
+    
     cartBoxDelete.addEventListener('click', () => {
         cartBox.remove();
         cartBoxFooterText.innerText = '';
+        itemInCart.innerText--;
 
     })
 
@@ -116,8 +118,7 @@ function addItemToCart(title, price) {
     cartBox.append(cartBoxTitle, cartBoxPrice, cartBoxDelete)
     const cart = document.getElementById('cart');
     cart.prepend(cartBox)
-
-    const itemInCart = document.getElementById('itemInCart')
+    
     itemInCart.innerText = cart.children.length-1;
 
     calculateTotalPrice(cartBoxPrice, price)
