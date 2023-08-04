@@ -126,7 +126,7 @@ function addItemToCart(title, price) {
 function calculateTotalPrice(cartBoxPrice, price) {
     const cartBoxFooterText = document.getElementById('cartBoxFooterText');
 
-    
+//    ------------------- needs repair 
     if (cart.children.length === 2) {
         cartBoxFooterText.innerText = price;
 
