@@ -272,23 +272,22 @@
 
 .cart-box-footer {
     display: flex;
-    width: 40%;
+    width: 50%;
     height: 30px;
-    margin-left: 60%;
+    margin-left: 50%;
     align-items: center;
     margin-top: 15%;
 }
 
-.cart-box-footer-total {
+.cart-box-footer-total,
+.cart-box-footer-text,
+.cart-box-footer-btn{
     width: 60px;
     height: 30px;
     text-align: center;
-    padding: auto;
 }
 
 .cart-box-footer-btn {
-    width: 60px;
-    height: 30px;
-    background-color: green;
+       background-color: green;
     border: none;
 }

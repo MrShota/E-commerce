@@ -2,6 +2,7 @@ const mainContent = document.getElementById('mainContent')
 const btnCart = document.getElementById('btnCart');
 getCategoriesFromServer();
 getProductsFromServer(12, 0);
+renderCartBox();
 
 function getCategoriesFromServer() {
     fetch('https://dummyjson.com/products/categories')
@@ -89,22 +90,23 @@ function handlePage(pageIndex, limit) {
     getProductsFromServer(limit, skip)
 }
 
-function renderCartBox() {
-    const cartBox = document.getElementById(cartBox);
-    const cartBoxTitle = document.getElementById(cartBoxTitle);
-    const cartBoxPrice = document.getElementById(cartBoxPrice);
-    const cartBoxDelete = document.getElementById(cartBoxDelete);
-    const cartBoxFooter = document.getElementById(cartBoxFooter);
-    const cartBoxFooterText = document.getElementById(cartBoxFooterText);
-    const cartBoxFooterTotal = document.getElementById(cartBoxFooterTotal);
-    const cartBoxFooterBtn = document.getElementById(cartBoxFooterBtn)
-
+function addItemToCart(title, price) {
+    const cartBoxTitle = document.getElementById('cartBoxTitle');
+    const cartBoxPrice = document.getElementById('cartBoxPrice');
+    const cartBoxFooterText = document.getElementById('cartBoxFooterText');
 
     cartBoxTitle.innerText = title;
     cartBoxPrice.innerText = price;
-    cartBoxFooterTotal.innerText = price;
+    cartBoxFooterText.innerText = price;
+
+}
+function renderCartBox() {
+    const cartBoxDelete = document.getElementById('cartBoxDelete');
+    const cartBoxFooterTotal = document.getElementById('cartBoxFooterTotal');
+    const cartBoxFooterBtn = document.getElementById('cartBoxFooterBtn')
+
     cartBoxDelete.innerText = 'X'
-    cartBoxFooterText.innerText = 'Total:';
+    cartBoxFooterTotal.innerText = 'Total:';
     cartBoxFooterBtn.innerText = 'Pay now'
 
 }
