@@ -101,11 +101,16 @@ function addItemToCart(title, price) {
     cartBoxPrice.classList.add('cart-box-price')
     cartBoxDelete.classList.add('cart-box-delete')
 
-    
+
     cartBoxTitle.innerText = title;
     cartBoxPrice.innerText = price;
     cartBoxDelete.innerText = 'X'
-    
+    cartBoxDelete.addEventListener('click', () => {
+        cartBox.remove();
+        cartBoxFooterText.innerText = '';
+
+    })
+
     const cartBoxFooterText = document.getElementById('cartBoxFooterText');
     cartBoxFooterText.innerText = price;
     cartBox.append(cartBoxTitle, cartBoxPrice, cartBoxDelete)
