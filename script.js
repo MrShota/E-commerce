@@ -2,7 +2,6 @@ const mainContent = document.getElementById('mainContent')
 const btnCart = document.getElementById('btnCart');
 getCategoriesFromServer();
 getProductsFromServer(12, 0);
-renderCartBox();
 
 function getCategoriesFromServer() {
     fetch('https://dummyjson.com/products/categories')
@@ -62,6 +61,7 @@ function renderProducts(products) {
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
         mainContent.append(productElement)
     }
+
 }
 function paging(totalCount, limit) {
     const mainContent = document.getElementById('mainContent');
@@ -91,22 +91,25 @@ function handlePage(pageIndex, limit) {
 }
 
 function addItemToCart(title, price) {
-    const cartBoxTitle = document.getElementById('cartBoxTitle');
-    const cartBoxPrice = document.getElementById('cartBoxPrice');
-    const cartBoxFooterText = document.getElementById('cartBoxFooterText');
+    const cartBox = document.createElement('div')
+    const cartBoxTitle = document.createElement('div')
+    const cartBoxPrice = document.createElement('div')
+    const cartBoxDelete = document.createElement('div')
 
+    cartBox.classList.add('cart-box')
+    cartBoxTitle.classList.add('cart-box-title')
+    cartBoxPrice.classList.add('cart-box-price')
+    cartBoxDelete.classList.add('cart-box-delete')
+
+    
     cartBoxTitle.innerText = title;
     cartBoxPrice.innerText = price;
-    cartBoxFooterText.innerText = price;
-
-}
-function renderCartBox() {
-    const cartBoxDelete = document.getElementById('cartBoxDelete');
-    const cartBoxFooterTotal = document.getElementById('cartBoxFooterTotal');
-    const cartBoxFooterBtn = document.getElementById('cartBoxFooterBtn')
-
     cartBoxDelete.innerText = 'X'
-    cartBoxFooterTotal.innerText = 'Total:';
-    cartBoxFooterBtn.innerText = 'Pay now'
+    
+    const cartBoxFooterText = document.getElementById('cartBoxFooterText');
+    cartBoxFooterText.innerText = price;
+    cartBox.append(cartBoxTitle, cartBoxPrice, cartBoxDelete)
+    const cart = document.getElementById('cart');
+    cart.prepend(cartBox)
 
 }

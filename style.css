@@ -234,32 +234,37 @@
     color: aqua;
 }
 
-.cart-box {
+.cart {
     width: 400px;
     height: 130px;
     background-color: red;
     position: absolute;
     top: 35px;
     right: 150px;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 7px;
+
     /* color: white; */
+    overflow-Y: scroll;
 
 
+}
+
+.cart-box {
+    width: 95%;
+    height: 25px;
+    display: flex;
+    border-bottom: 1px solid gray;
+    margin: 10px auto;
 }
 
 .cart-box-title {
     width: 70%;
     height: 20px;
-    text-align: center;
 
 }
 
 .cart-box-price {
     width: 20%;
     height: 20px;
-    text-align: center;
 
 }
 
@@ -267,7 +272,7 @@
     width: 10%;
     height: 20px;
     text-align: center;
-    cursor:pointer
+    cursor: pointer
 }
 
 .cart-box-footer {
@@ -281,13 +286,13 @@
 
 .cart-box-footer-total,
 .cart-box-footer-text,
-.cart-box-footer-btn{
+.cart-box-footer-btn {
     width: 60px;
     height: 30px;
     text-align: center;
 }
 
 .cart-box-footer-btn {
-       background-color: green;
-    border: none;
+    background-color: green;
+    cursor: pointer;
 }
