@@ -1,5 +1,4 @@
 const mainContent = document.getElementById('mainContent')
-const btnCart = document.getElementById('btnCart');
 getCategoriesFromServer();
 getProductsFromServer(12, 0);
 
@@ -112,20 +111,50 @@ function addItemToCart(title, price) {
 
     })
 
-    
-    // const cartBoxFooterText = document.getElementById('cartBoxFooterText');
-    // cartBoxFooterText.innerText = ;
+
+
     cartBox.append(cartBoxTitle, cartBoxPrice, cartBoxDelete)
     const cart = document.getElementById('cart');
     cart.prepend(cartBox)
-    
-    calculateTotalPrice(cart.cartBox)
+
+    calculateTotalPrice(cartBoxPrice, price)
 }
-function calculateTotalPrice(prices) {
-    for (let price of prices) {
-       const total= price + price
-       console.log(total)
+function calculateTotalPrice(cartBoxPrice, price) {
+    const cartBoxFooterText = document.getElementById('cartBoxFooterText');
+    if (cart.children.length === 2) {
+        cartBoxFooterText.innerText = price;
+
+        // console.log(cart.children.length)
+    }
+    else if (cart.children.length > 2) {
+        // const all = cart.children;
+        // console.log(all)
+        // for (let one in all) {
+        //      console.log(all)
+        // }
+
+        const total = cartBoxPrice.innerText;
+        console.log(total + price)
     }
 
 
 }
+
+const btnCart = document.getElementById('btnCart');
+btnCart.addEventListener('mouseenter', () => {
+    const cart = document.getElementById('cart');
+    cart.style.display = 'block'
+})
+btnCart.addEventListener('mouseleave', () => {
+    const cart = document.getElementById('cart');
+    cart.style.display = 'none'
+})
+const cart = document.getElementById('cart');
+cart.addEventListener('mouseenter',()=>{
+    const cart = document.getElementById('cart');
+    cart.style.display = 'block'
+})
+cart.addEventListener('mouseleave',()=>{
+    const cart = document.getElementById('cart');
+    cart.style.display = 'none'
+})

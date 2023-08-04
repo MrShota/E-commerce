@@ -244,6 +244,7 @@
 
     /* color: white; */
     overflow-Y: scroll;
+    display: none;
 
 
 }
