@@ -19,13 +19,13 @@ function renderCategories(categories) {
         line.classList.add('line');
         categoryList.append(categoryElement, line);
         categoryElement.addEventListener('click', () => {
-            getProductsByCategory(category, 12)
+            getProductsByCategory(category)
         })
     }
 }
-function getProductsByCategory(category,limit) {
+function getProductsByCategory(category) {
 
-    fetch(`https://dummyjson.com/products/category/${category}?limit=${limit}`)
+    fetch(`https://dummyjson.com/products/category/${category}`)
         .then(res => res.json())
         .then(productsByCategory => {
             renderProductByCategory(productsByCategory.products)
