@@ -19,13 +19,13 @@ function renderCategories(categories) {
         line.classList.add('line');
         categoryList.append(categoryElement, line);
         categoryElement.addEventListener('click', () => {
-            getProductByCategory(category)
+            getProductsByCategory(category, 12)
         })
     }
 }
-function getProductByCategory(category) {
+function getProductsByCategory(category,limit) {
 
-    fetch(`https://dummyjson.com/products/category/${category}`)
+    fetch(`https://dummyjson.com/products/category/${category}?limit=${limit}`)
         .then(res => res.json())
         .then(productsByCategory => {
             renderProductByCategory(productsByCategory.products)
@@ -34,7 +34,7 @@ function getProductByCategory(category) {
 function renderProductByCategory(productByCategory) {
     console.log(productByCategory);
     mainContent.innerHTML = '';
-    for ( let products of productByCategory) {
+    for (let products of productByCategory) {
         console.log(productByCategory)
         const productElement = document.createElement('div');
         const productTitle = document.createElement('div');
