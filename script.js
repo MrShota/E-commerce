@@ -53,8 +53,12 @@ function renderProductByCategory(productByCategory) {
         productTitle.innerText = products.title;
         productImg.src = products.images[0];
         productDescription.innerText = products.description;
-        productPrice.innerText = '$ ' + products.price
-        addBtn.innerText = 'Add to Cart'
+        productPrice.innerText = '$ ' + products.price;
+        addBtn.innerText = 'Add to Cart';
+
+        addBtn.addEventListener('click', () => {
+            addItemToCart(productTitle.innerText, productPrice.innerText);
+        })
 
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
         mainContent.append(productElement)
