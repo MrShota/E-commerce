@@ -18,7 +18,47 @@ function renderCategories(categories) {
         const line = document.createElement('div');
         line.classList.add('line');
         categoryList.append(categoryElement, line);
+        categoryElement.addEventListener('click', () => {
+            renderProductByCategory(category, 12)
+        })
     }
+}
+function renderProductByCategory(category, limit) {
+
+    fetch(`https://dummyjson.com/products/category/${category}?limit=${limit}`)
+        .then(res => res.json())
+        .then(productsByCategory => {
+            console.log(productsByCategory.products)
+            mainContent.innerText = ''
+            for (let product in productsByCategory.products) {
+                const productElement = document.createElement('div');
+                const productTitle = document.createElement('div');
+                const productImg = document.createElement('img');
+                const productDescription = document.createElement('div');
+                const productPrice = document.createElement('div');
+                const addBtn = document.createElement('button');
+
+                productElement.classList.add('product-element');
+                productImg.classList.add('product-img');
+                productTitle.classList.add('product-title');
+                productPrice.classList.add('product-price');
+                productDescription.classList.add('product-description');
+                addBtn.classList.add('add-btn');
+
+                productTitle.innerText = product.title;
+                // productImg.src = product.images[1];
+                productDescription.innerText = product.description;
+                productPrice.innerText = '$ ' + product.price
+                addBtn.innerText = 'Add to Cart'
+
+                addBtn.addEventListener('click', () => {
+                    addItemToCart(productTitle.innerText, productPrice.innerText)
+                })
+
+                productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
+                mainContent.append(productElement)
+            }
+        });
 }
 
 function getProductsFromServer(limit, skip) {
@@ -105,7 +145,7 @@ function addItemToCart(title, price) {
     cartBoxPrice.innerText = price;
     cartBoxDelete.innerText = 'X'
     const itemInCart = document.getElementById('itemInCart')
-    
+
     cartBoxDelete.addEventListener('click', () => {
         cartBox.remove();
         cartBoxFooterText.innerText = '';
@@ -118,15 +158,15 @@ function addItemToCart(title, price) {
     cartBox.append(cartBoxTitle, cartBoxPrice, cartBoxDelete)
     const cart = document.getElementById('cart');
     cart.prepend(cartBox)
-    
-    itemInCart.innerText = cart.children.length-1;
+
+    itemInCart.innerText = cart.children.length - 1;
 
     calculateTotalPrice(cartBoxPrice, price)
 }
 function calculateTotalPrice(cartBoxPrice, price) {
     const cartBoxFooterText = document.getElementById('cartBoxFooterText');
 
-//    ------------------- needs repair 
+    //    ------------------- needs repair 
     if (cart.children.length === 2) {
         cartBoxFooterText.innerText = price;
 
