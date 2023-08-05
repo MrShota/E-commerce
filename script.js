@@ -19,48 +19,48 @@ function renderCategories(categories) {
         line.classList.add('line');
         categoryList.append(categoryElement, line);
         categoryElement.addEventListener('click', () => {
-            renderProductByCategory(category, 12)
+            getProductByCategory(category)
         })
     }
 }
-function renderProductByCategory(category, limit) {
+function getProductByCategory(category) {
 
-    fetch(`https://dummyjson.com/products/category/${category}?limit=${limit}`)
+    fetch(`https://dummyjson.com/products/category/${category}`)
         .then(res => res.json())
         .then(productsByCategory => {
-            console.log(productsByCategory.products)
-            mainContent.innerText = ''
-            for (let product in productsByCategory.products) {
-                const productElement = document.createElement('div');
-                const productTitle = document.createElement('div');
-                const productImg = document.createElement('img');
-                const productDescription = document.createElement('div');
-                const productPrice = document.createElement('div');
-                const addBtn = document.createElement('button');
-
-                productElement.classList.add('product-element');
-                productImg.classList.add('product-img');
-                productTitle.classList.add('product-title');
-                productPrice.classList.add('product-price');
-                productDescription.classList.add('product-description');
-                addBtn.classList.add('add-btn');
-
-                productTitle.innerText = product.title;
-                // productImg.src = product.images[1];
-                productDescription.innerText = product.description;
-                productPrice.innerText = '$ ' + product.price
-                addBtn.innerText = 'Add to Cart'
-
-                addBtn.addEventListener('click', () => {
-                    addItemToCart(productTitle.innerText, productPrice.innerText)
-                })
-
-                productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
-                mainContent.append(productElement)
-            }
+            renderProductByCategory(productsByCategory.products)
         });
 }
+function renderProductByCategory(productByCategory) {
+    console.log(productByCategory);
+    mainContent.innerHTML = '';
+    for ( let products of productByCategory) {
+        console.log(productByCategory)
+        const productElement = document.createElement('div');
+        const productTitle = document.createElement('div');
+        const productImg = document.createElement('img');
+        const productDescription = document.createElement('div');
+        const productPrice = document.createElement('div');
+        const addBtn = document.createElement('button');
 
+        productElement.classList.add('product-element');
+        productImg.classList.add('product-img');
+        productTitle.classList.add('product-title');
+        productPrice.classList.add('product-price');
+        productDescription.classList.add('product-description');
+        addBtn.classList.add('add-btn');
+
+        productTitle.innerText = products.title;
+        productImg.src = products.images[0];
+        productDescription.innerText = products.description;
+        productPrice.innerText = '$ ' + products.price
+        addBtn.innerText = 'Add to Cart'
+
+        productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
+        mainContent.append(productElement)
+    }
+
+}
 function getProductsFromServer(limit, skip) {
     fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
         .then(res => res.json())
