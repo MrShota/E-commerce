@@ -1,4 +1,5 @@
-const mainContent = document.getElementById('mainContent')
+const mainContent = document.getElementById('mainContent');
+const btnSearch = document.getElementById('btnSearch');
 getCategoriesFromServer();
 getProductsFromServer(12, 0);
 
@@ -32,10 +33,10 @@ function getProductsByCategory(category) {
         });
 }
 function renderProductByCategory(productByCategory) {
-    console.log(productByCategory);
+    // console.log(productByCategory);
     mainContent.innerHTML = '';
     for (let products of productByCategory) {
-        console.log(productByCategory)
+        // console.log(productByCategory)
         const productElement = document.createElement('div');
         const productTitle = document.createElement('div');
         const productImg = document.createElement('img');
@@ -208,3 +209,82 @@ cart.addEventListener('mouseleave', () => {
     const cart = document.getElementById('cart');
     cart.style.display = 'none'
 })
+
+btnSearch.addEventListener('click', () => {
+    const searchInput = document.getElementById('searchInput').value;
+    console.log(searchInput);
+    renderSearchProduct(searchInput);
+
+})
+
+function renderSearchProduct(input) {
+    mainContent.innerText = '';
+
+    fetch(`https://dummyjson.com/products/search?q=${input}`)
+        .then(res => res.json())
+        .then(data => {
+            const searchElement = data.products;
+            // console.log(searchElement.length)
+
+            if (searchElement.length > 1) {
+                console.log(data)
+                for (let products of searchElement) {
+                    // console.log(productByCategory)
+                    const productElement = document.createElement('div');
+                    const productTitle = document.createElement('div');
+                    const productImg = document.createElement('img');
+                    const productDescription = document.createElement('div');
+                    const productPrice = document.createElement('div');
+                    const addBtn = document.createElement('button');
+
+                    productElement.classList.add('product-element');
+                    productImg.classList.add('product-img');
+                    productTitle.classList.add('product-title');
+                    productPrice.classList.add('product-price');
+                    productDescription.classList.add('product-description');
+                    addBtn.classList.add('add-btn');
+
+                    productTitle.innerText = products.title;
+                    productImg.src = products.images[0];
+                    productDescription.innerText = products.description;
+                    productPrice.innerText = '$ ' + products.price;
+                    addBtn.innerText = 'Add to Cart';
+
+                    addBtn.addEventListener('click', () => {
+                        addItemToCart(productTitle.innerText, productPrice.innerText);
+                    })
+
+                    productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
+                    mainContent.append(productElement)
+                }
+                // } else if (searchElement.length === 1) {
+                //     const productElement = document.createElement('div');
+                //     const productTitle = document.createElement('div');
+                //     const productImg = document.createElement('img');
+                //     const productDescription = document.createElement('div');
+                //     const productPrice = document.createElement('div');
+                //     const addBtn = document.createElement('button');
+
+                //     productElement.classList.add('product-element');
+                //     productImg.classList.add('product-img');
+                //     productTitle.classList.add('product-title');
+                //     productPrice.classList.add('product-price');
+                //     productDescription.classList.add('product-description');
+                //     addBtn.classList.add('add-btn');
+
+                //     productTitle.innerText = searchElement.title;
+                //     // productImg.src = searchElement.images[0];
+                //     productDescription.innerText = searchElement.description;
+                //     productPrice.innerText = '$ ' + searchElement.price;
+                //     addBtn.innerText = 'Add to Cart';
+
+                //     addBtn.addEventListener('click', () => {
+                //         addItemToCart(productTitle.innerText, productPrice.innerText);
+                //     })
+
+                //     productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
+                //     mainContent.append(productElement)
+            }
+
+        });
+}
