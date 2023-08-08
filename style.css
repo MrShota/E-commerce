@@ -154,6 +154,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin: 10px;
+    border-radius: 8px;
 }
 
 .product-element {
@@ -163,7 +164,7 @@ body {
     flex-direction: column;
     padding: 20px;
     margin: 10px;
-    background-color: #DDE6ED;
+    background-color: #C0EEE4;
     border-radius: 8px;
 }
 
