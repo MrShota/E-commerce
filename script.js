@@ -1,15 +1,15 @@
 const mainContent = document.getElementById('mainContent');
 const btnSearch = document.getElementById('btnSearch');
-getCategoriesFromServer();
+// getCategoriesFromServer();
 getProductsFromServer(12, 0);
 
-function getCategoriesFromServer() {
+(function getCategoriesFromServer() {
     fetch('https://dummyjson.com/products/categories')
         .then(res => res.json())
         .then(allCategory => {
             renderCategories(allCategory)
         });
-}
+}())
 function renderCategories(categories) {
     const categoryList = document.getElementById('categories-list');
     for (let category of categories) {
