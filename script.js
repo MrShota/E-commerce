@@ -225,10 +225,12 @@ function renderSearchProduct(input) {
         .then(data => {
             const searchElement = data.products;
             // console.log(searchElement.length)
-
+            
             if (searchElement.length > 1) {
                 console.log(data)
                 for (let products of searchElement) {
+                    mainContent.style.color = 'black';
+
                     // console.log(productByCategory)
                     const productElement = document.createElement('div');
                     const productTitle = document.createElement('div');
@@ -259,6 +261,7 @@ function renderSearchProduct(input) {
                 }
             } else {
                 mainContent.innerText = 'Item not found';
+                mainContent.style.color = 'red';
             }
 
         });

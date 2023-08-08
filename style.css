@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #9ED2BE;
+
+}
+
 .container {
     width: 100%;
     height: 100vh;
@@ -12,7 +17,8 @@
 .header {
     width: 100%;
     height: 50px;
-    background-color: aqua;
+    /* background-color: #C8E4B2; */
+    background-color: #9ED2BE;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -38,7 +44,7 @@
     border-radius: 8px;
     cursor: pointer;
     text-transform: capitalize;
-    background-color: rgb(173, 186, 198);
+    background-color: #7EAA92;
     color: aliceblue;
     font-size: .9rem;
 }
@@ -57,7 +63,7 @@
     cursor: pointer;
 }
 
-#itemInCart{
+#itemInCart {
     content: '11';
     width: 3px;
     height: 3px;
@@ -71,7 +77,7 @@
     display: flex;
     flex-direction: column;
     width: 20%;
-    background-color: blueviolet;
+    background-color: #D5FFE4;
     border-radius: 8px;
     margin: 10px;
     padding-top: 10px;
@@ -94,7 +100,7 @@
 .container-wrapper {
     width: 90%;
     margin-inline: auto;
-    background-color: #656c71;
+    background-color: #9ED2BE;
     border-radius: 8px;
     display: flex;
 }
@@ -107,7 +113,9 @@
 .footer {
     width: 100%;
     height: 90px;
-    background-color: #203769;
+    background-color: #AAC8A7;
+    color: rgb(255, 255, 255);
+
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -117,14 +125,11 @@
     width: 10px;
 }
 
-::-webkit-scrollbar-track {
-    /* background-color: red; */
-}
 
 ::-webkit-scrollbar-thumb {
     border-radius: 50px;
     height: 5px;
-    background-color: yellow;
+    background-color: transparent;
 }
 
 .category-element {
@@ -145,11 +150,7 @@
 
 .main-content {
     width: 80%;
-    /* background-color: #656c71; */
-    /* background-color: #ECC1B2; */
-    background-color: rgb(202, 202, 206);
-    border-radius: 8px;
-
+    background-color: #D5FFE4;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -163,9 +164,7 @@
     flex-direction: column;
     padding: 20px;
     margin: 10px;
-    /* border: 1px solid red; */
-    /* background-color: #ECC1B2; */
-    background-color: #656c71;
+    background-color: #91C8E4;
     border-radius: 8px;
 }
 
@@ -215,11 +214,6 @@
     text-align: center;
 }
 
-
-
-.footer {
-    color: aliceblue;
-}
 
 .madeWith span {
     color: aqua;
@@ -278,7 +272,7 @@
     height: 20px;
     cursor: pointer;
     margin: auto;
-    
+
 }
 
 .cart-box-footer {
