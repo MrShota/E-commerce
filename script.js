@@ -135,21 +135,21 @@ function handlePage(pageIndex, limit) {
 }
 
 function addItemToCart(title, price) {
-    const cartBox = document.createElement('div')
-    const cartBoxTitle = document.createElement('div')
-    const cartBoxPrice = document.createElement('div')
-    const cartBoxDelete = document.createElement('div')
+    const cartBox = document.createElement('div');
+    const cartBoxTitle = document.createElement('div');
+    const cartBoxPrice = document.createElement('div');
+    const cartBoxDelete = document.createElement('div');
 
-    cartBox.classList.add('cart-box')
-    cartBoxTitle.classList.add('cart-box-title')
-    cartBoxPrice.classList.add('cart-box-price')
-    cartBoxDelete.classList.add('cart-box-delete')
+    cartBox.classList.add('cart-box');
+    cartBoxTitle.classList.add('cart-box-title');
+    cartBoxPrice.classList.add('cart-box-price');
+    cartBoxDelete.classList.add('cart-box-delete');
 
 
     cartBoxTitle.innerText = title;
     cartBoxPrice.innerText = price;
-    cartBoxDelete.innerText = 'X'
-    const itemInCart = document.getElementById('itemInCart')
+    cartBoxDelete.innerText = 'X';
+    cartBoxFooterText.innerText = price;
 
     cartBoxDelete.addEventListener('click', () => {
         cartBox.remove();
@@ -158,37 +158,22 @@ function addItemToCart(title, price) {
 
     })
 
-
-
-    cartBox.append(cartBoxTitle, cartBoxPrice, cartBoxDelete)
+    cartBox.append(cartBoxTitle, cartBoxPrice, cartBoxDelete);
     const cart = document.getElementById('cart');
-    cart.prepend(cartBox)
+    cart.prepend(cartBox);
 
+    const itemInCart = document.getElementById('itemInCart');
     itemInCart.innerText = cart.children.length - 1;
 
-    calculateTotalPrice(cartBoxPrice, price)
+    calculateTotalPrice(price);
 }
-function calculateTotalPrice(cartBoxPrice, price) {
+function calculateTotalPrice(prices) {
     const cartBoxFooterText = document.getElementById('cartBoxFooterText');
+    console.log(prices)
+    // cartBoxFooterText.innerText = ''
+    // for (let price in prices) {
 
-    //    ------------------- needs repair 
-    if (cart.children.length === 2) {
-        cartBoxFooterText.innerText = price;
-
-        // console.log(cart.children.length)
-    }
-    else if (cart.children.length > 2) {
-        // const all = cart.children;
-        // console.log(all)
-        // for (let one in all) {
-        //      console.log(all)
-        // }
-
-        const total = cartBoxPrice.innerText;
-        console.log(total + price)
-    }
-
-
+    // }
 }
 
 const btnCart = document.getElementById('btnCart');
@@ -225,7 +210,7 @@ function renderSearchProduct(input) {
         .then(data => {
             const searchElement = data.products;
             // console.log(searchElement.length)
-            
+
             if (searchElement.length > 1) {
                 console.log(data)
                 for (let products of searchElement) {
