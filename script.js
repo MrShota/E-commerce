@@ -212,7 +212,7 @@ cart.addEventListener('mouseleave', () => {
 
 btnSearch.addEventListener('click', () => {
     const searchInput = document.getElementById('searchInput').value;
-    console.log(searchInput);
+    // console.log(searchInput);
     renderSearchProduct(searchInput);
 
 })
@@ -257,33 +257,8 @@ function renderSearchProduct(input) {
                     productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
                     mainContent.append(productElement)
                 }
-                // } else if (searchElement.length === 1) {
-                //     const productElement = document.createElement('div');
-                //     const productTitle = document.createElement('div');
-                //     const productImg = document.createElement('img');
-                //     const productDescription = document.createElement('div');
-                //     const productPrice = document.createElement('div');
-                //     const addBtn = document.createElement('button');
-
-                //     productElement.classList.add('product-element');
-                //     productImg.classList.add('product-img');
-                //     productTitle.classList.add('product-title');
-                //     productPrice.classList.add('product-price');
-                //     productDescription.classList.add('product-description');
-                //     addBtn.classList.add('add-btn');
-
-                //     productTitle.innerText = searchElement.title;
-                //     // productImg.src = searchElement.images[0];
-                //     productDescription.innerText = searchElement.description;
-                //     productPrice.innerText = '$ ' + searchElement.price;
-                //     addBtn.innerText = 'Add to Cart';
-
-                //     addBtn.addEventListener('click', () => {
-                //         addItemToCart(productTitle.innerText, productPrice.innerText);
-                //     })
-
-                //     productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
-                //     mainContent.append(productElement)
+            } else {
+                mainContent.innerText = 'Item not found';
             }
 
         });
