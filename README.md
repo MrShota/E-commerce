@@ -1,5 +1,5 @@
 # E-commerce
-This is a typical e-commerce website, products and product categories are #fetched from the server and displayed on the screen.
+This is a typical e-commerce website, products and product categories are fetched from the server and displayed on the screen.
 
 header features - The icon refreshes the page.
                  The search field works.
