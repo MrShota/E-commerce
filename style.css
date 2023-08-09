@@ -233,10 +233,12 @@ body {
     font-size: 1.3rem;
     margin: 10px;
     cursor: pointer;
+    color:aqua;
+    text-decoration: none;
 }
 
 .social>*:hover {
-    color: aqua;
+    color:  var(--product);
 }
 
 .cart {
