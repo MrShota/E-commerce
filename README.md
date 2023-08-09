@@ -13,3 +13,6 @@ Body characteristics - By clicking on a category, items of the corresponding cat
                        
 footer features - The icon refreshes the page.
                   social links work properly
+
+
+!! This project is intended for desktop monitors only, various bugs are expected on smaller screens !!
