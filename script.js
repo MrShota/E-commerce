@@ -175,14 +175,12 @@ function addItemToCart(title, price) {
     // console.log(itemInCart.innerHTML)
 
     if (itemInCart.innerHTML == 1) {
-        cartBoxFooterText.innerText =price;
-        
+        cartBoxFooterText.innerText = price;
+
     } else {
-        cartBoxFooterText.innerText = price+price;
+        cartBoxFooterText.innerText = price + price;
     }
 }
-
-
 
 const btnCart = document.getElementById('btnCart');
 btnCart.addEventListener('mouseenter', () => {
@@ -259,3 +257,15 @@ function renderSearchProduct(input) {
 
         });
 }
+const imgLogo = document.getElementById('imgLogo');
+imgLogo.addEventListener('click', () => {
+    mainContent.innerHTML = ''
+    getProductsFromServer(12, 0);
+
+})
+const imgLogo2 = document.getElementById('imgLogo2');
+imgLogo2.addEventListener('click', () => {
+    mainContent.innerHTML = ''
+    getProductsFromServer(12, 0);
+
+})
