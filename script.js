@@ -76,32 +76,40 @@ function getProductsFromServer(limit, skip) {
 }
 function renderProducts(products) {
 
-
     for (let product of products) {
         const productElement = document.createElement('div');
         const productTitle = document.createElement('div');
         const productImg = document.createElement('img');
         const productDescription = document.createElement('div');
         const productPrice = document.createElement('div');
+        const productPriceCurrency = document.createElement('div');
+        const productPriceText = document.createElement('div');
+
         const addBtn = document.createElement('button');
 
         productElement.classList.add('product-element');
         productImg.classList.add('product-img');
         productTitle.classList.add('product-title');
         productPrice.classList.add('product-price');
+        productPriceText.classList.add('product-price-text');
+
         productDescription.classList.add('product-description');
         addBtn.classList.add('add-btn');
 
         productTitle.innerText = product.title;
-        productImg.src = product.images[0]
+        productImg.src = product.images[0];
         productDescription.innerText = product.description;
-        productPrice.innerText = '$ ' + product.price
+        productPriceCurrency.innerText = '$';
+        productPriceText.innerText = product.price;
+
+        productPrice.prepend(productPriceCurrency, productPriceText)
+
         addBtn.innerText = 'Add to Cart'
 
         addBtn.addEventListener('click', () => {
-            addItemToCart(productTitle.innerText, productPrice.innerText)
+            addItemToCart(productTitle.innerText, product.price)
         })
-
+        // console.log(productPriceText.innerText)
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
         mainContent.append(productElement)
     }
@@ -140,6 +148,7 @@ function addItemToCart(title, price) {
     const cartBoxPrice = document.createElement('div');
     const cartBoxDelete = document.createElement('div');
 
+
     cartBox.classList.add('cart-box');
     cartBoxTitle.classList.add('cart-box-title');
     cartBoxPrice.classList.add('cart-box-price');
@@ -149,7 +158,6 @@ function addItemToCart(title, price) {
     cartBoxTitle.innerText = title;
     cartBoxPrice.innerText = price;
     cartBoxDelete.innerText = 'X';
-    cartBoxFooterText.innerText = price;
 
     cartBoxDelete.addEventListener('click', () => {
         cartBox.remove();
@@ -164,17 +172,17 @@ function addItemToCart(title, price) {
 
     const itemInCart = document.getElementById('itemInCart');
     itemInCart.innerText = cart.children.length - 1;
+    // console.log(itemInCart.innerHTML)
 
-    calculateTotalPrice(price);
+    if (itemInCart.innerHTML == 1) {
+        cartBoxFooterText.innerText =price;
+        
+    } else {
+        cartBoxFooterText.innerText = price+price;
+    }
 }
-function calculateTotalPrice(prices) {
-    const cartBoxFooterText = document.getElementById('cartBoxFooterText');
-    console.log(prices)
-    // cartBoxFooterText.innerText = ''
-    // for (let price in prices) {
 
-    // }
-}
+
 
 const btnCart = document.getElementById('btnCart');
 btnCart.addEventListener('mouseenter', () => {
