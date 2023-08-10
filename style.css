@@ -166,7 +166,7 @@ body {
     background-color: var(--side);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin: 10px;
     border-radius: 8px;
 }
@@ -176,8 +176,8 @@ body {
     height: 520px;
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    margin: 10px;
+    padding: 7px;
+     margin: 20px 32px 0px;
     background-color: var(--product);
     border-radius: 8px;
 }
