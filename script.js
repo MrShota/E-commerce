@@ -157,7 +157,7 @@ function addItemToCart(title, price) {
 
     cartBoxTitle.innerText = title;
     cartBoxPrice.innerText = price;
-    cartBoxDelete.innerText = 'X';
+    cartBoxDelete.innerText = 'Delete Item';
 
     cartBoxDelete.addEventListener('click', () => {
         cartBox.remove();

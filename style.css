@@ -13,6 +13,9 @@
     --line:#FFE79B;
     --product:#C0EEE4;
     --cart:#F8F988;
+    --linkedin:#0A66C2;
+    --gitHub:#010409;
+    --instagram:#FE0E56;
 }
 
 body {
@@ -230,15 +233,23 @@ body {
 }
 
 .social>* {
-    font-size: 1.3rem;
+    /* width: 50px; */
+    /* height: 50px; */
+    font-size: 1.5rem;
     margin: 10px;
     cursor: pointer;
     color:aqua;
     text-decoration: none;
 }
 
-.social>*:hover {
-    color:  var(--product);
+.social>:first-child:hover {
+    color:  var(--linkedin);
+}
+.social>:nth-child(2):hover {
+    color: var(--gitHub);
+}
+.social>:nth-child(3):hover {
+    color: var(--instagram);
 }
 
 .cart {
@@ -271,17 +282,18 @@ body {
 }
 
 .cart-box-price {
-    width: 15%;
+    width: 10%;
     height: 20px;
     margin: auto;
 
 }
 
 .cart-box-delete {
-    width: 10%;
+    width: 20%;
     height: 20px;
     cursor: pointer;
     margin: auto;
+    color: red;
 
 }
 
