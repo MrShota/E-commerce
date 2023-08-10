@@ -63,6 +63,9 @@ body {
     color: aliceblue;
     font-size: .9rem;
 }
+.btn-search:active{
+    transform: translateX(1.5px) translateY(1.5px);
+}
 
 .material-symbols-outlined {
     font-variation-settings:
@@ -146,12 +149,20 @@ body {
 }
 
 .category-element {
+    width: 95%;
+    height: 30px;
     font-size: 1.2rem;
     display: flex;
     justify-content: center;
-    margin: 10px;
+    text-align: center;
+    margin: 5px;
     text-transform: capitalize;
     cursor: pointer;
+}
+.category-element:active,
+.img-logo:Active,
+.pagingElement:Active{
+    transform: translateX(1.5px) translateY(1.5px);
 }
 
 .line {
@@ -226,14 +237,16 @@ overflow: hidden;
 }
 .paging {
     width: 90%;
-    height: 20px;
+    height: 25px;
     display: flex;
     justify-content: space-evenly;
+    margin-inline: auto;
 }
 
 .pagingElement {
     width: 20px;
-    text-align: center;
+    /* text-align: center;*/
+    margin: auto;
 }
 
 .madeWith span {
