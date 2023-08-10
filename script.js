@@ -33,10 +33,8 @@ function getProductsByCategory(category) {
         });
 }
 function renderProductByCategory(productByCategory) {
-    // console.log(productByCategory);
     mainContent.innerHTML = '';
     for (let products of productByCategory) {
-        // console.log(productByCategory)
         const productElement = document.createElement('div');
         const productTitle = document.createElement('div');
         const productImg = document.createElement('img');
@@ -148,7 +146,7 @@ function addItemToCart(title, price) {
     const cartBoxTitle = document.createElement('div');
     const cartBoxPrice = document.createElement('div');
     const cartBoxDelete = document.createElement('img');
-    cartBoxDelete.src='delete.png'
+    cartBoxDelete.src = 'delete.png'
 
 
     cartBox.classList.add('cart-box');
@@ -159,10 +157,6 @@ function addItemToCart(title, price) {
 
     cartBoxTitle.innerText = title;
     cartBoxPrice.innerText = price;
-    // cartBoxDelete.innerText =cartBoxDeleteImg.src ;
-
-
-
 
     cartBoxDelete.addEventListener('click', () => {
         cartBox.remove();
@@ -256,8 +250,19 @@ function renderSearchProduct(input) {
                     mainContent.append(productElement)
                 }
             } else {
-                mainContent.innerText = 'Item not found';
-                mainContent.style.color = 'red';
+                const errorContainer = document.createElement('div');
+                errorContainer.classList.add('error-container');
+
+                const errorImg = document.createElement('img');
+                errorImg.classList.add('error-img');
+                errorImg.src = 'not-found.png';
+
+                const errorText = document.createElement('span');
+                errorText.classList.add('error-text');
+                errorText.innerText = 'Product not found!';
+
+                errorContainer.append( errorText, errorImg);
+                mainContent.append(errorContainer);
             }
 
         });

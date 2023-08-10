@@ -244,6 +244,29 @@ body {
     margin: auto;
 }
 
+.error-container {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+.error-text {
+    height: 10%;
+    color: var(--instagram);
+    font-size: 2rem;
+}
+
+.error-img {
+    width: 40%;
+    margin: auto;
+
+}
+
+
 .madeWith span {
     color: aqua;
 }
