@@ -107,7 +107,7 @@ function renderProducts(products) {
         addBtn.innerText = 'Add to Cart'
 
         addBtn.addEventListener('click', () => {
-            addItemToCart(productTitle.innerText, product.price)
+            addItemToCart(productTitle.innerText, product.price, addBtn);
         })
         // console.log(productPriceText.innerText)
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
@@ -115,6 +115,7 @@ function renderProducts(products) {
     }
 
 }
+
 function paging(totalCount, limit) {
     const mainContent = document.getElementById('mainContent');
     const paging = document.createElement('div');
@@ -157,7 +158,10 @@ function addItemToCart(title, price) {
 
     cartBoxTitle.innerText = title;
     cartBoxPrice.innerText = price;
-    cartBoxDelete.innerText = 'Delete Item';
+    cartBoxDelete.innerText = 'Remove';
+
+
+
 
     cartBoxDelete.addEventListener('click', () => {
         cartBox.remove();
@@ -172,7 +176,6 @@ function addItemToCart(title, price) {
 
     const itemInCart = document.getElementById('itemInCart');
     itemInCart.innerText = cart.children.length - 1;
-    // console.log(itemInCart.innerHTML)
 
     if (itemInCart.innerHTML == 1) {
         cartBoxFooterText.innerText = price;
@@ -180,6 +183,7 @@ function addItemToCart(title, price) {
     } else {
         cartBoxFooterText.innerText = price + price;
     }
+
 }
 
 const btnCart = document.getElementById('btnCart');

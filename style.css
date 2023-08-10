@@ -220,7 +220,10 @@ overflow: hidden;
     cursor: pointer;
     margin-left: 60%;
 }
+.add-btn:active{
+    transform: translateX(2px) translateY(2px);
 
+}
 .paging {
     width: 90%;
     height: 20px;
