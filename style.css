@@ -166,7 +166,7 @@ body {
     background-color: var(--side);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: start;
     margin: 10px;
     border-radius: 8px;
 }
