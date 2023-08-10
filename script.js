@@ -147,7 +147,8 @@ function addItemToCart(title, price) {
     const cartBox = document.createElement('div');
     const cartBoxTitle = document.createElement('div');
     const cartBoxPrice = document.createElement('div');
-    const cartBoxDelete = document.createElement('div');
+    const cartBoxDelete = document.createElement('img');
+    cartBoxDelete.src='delete.png'
 
 
     cartBox.classList.add('cart-box');
@@ -158,7 +159,7 @@ function addItemToCart(title, price) {
 
     cartBoxTitle.innerText = title;
     cartBoxPrice.innerText = price;
-    cartBoxDelete.innerText = 'Remove';
+    // cartBoxDelete.innerText =cartBoxDeleteImg.src ;
 
 
 

@@ -63,7 +63,8 @@ body {
     color: aliceblue;
     font-size: .9rem;
 }
-.btn-search:active{
+
+.btn-search:active {
     transform: translateX(1.5px) translateY(1.5px);
 }
 
@@ -159,10 +160,14 @@ body {
     text-transform: capitalize;
     cursor: pointer;
 }
+
 .category-element:active,
 .img-logo:Active,
-.pagingElement:Active{
+.pagingElement:Active,
+.add-btn:active,
+.cart-box-delete:active {
     transform: translateX(1.5px) translateY(1.5px);
+
 }
 
 .line {
@@ -188,7 +193,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 7px;
-     margin: 20px 32px 0px;
+    margin: 20px 32px 0px;
     background-color: var(--product);
     border-radius: 8px;
 }
@@ -218,7 +223,7 @@ body {
     height: 28%;
     font-size: 1rem;
     padding: 10px;
-overflow: hidden;
+    overflow: hidden;
 }
 
 .add-btn {
@@ -231,10 +236,7 @@ overflow: hidden;
     cursor: pointer;
     margin-left: 60%;
 }
-.add-btn:active{
-    transform: translateX(2px) translateY(2px);
 
-}
 .paging {
     width: 90%;
     height: 25px;
@@ -245,7 +247,6 @@ overflow: hidden;
 
 .pagingElement {
     width: 20px;
-    /* text-align: center;*/
     margin: auto;
 }
 
@@ -308,17 +309,16 @@ overflow: hidden;
     width: 10%;
     height: 20px;
     margin: auto;
-
 }
 
 .cart-box-delete {
-    width: 20%;
+    width: 6.5%;
     height: 20px;
     cursor: pointer;
     margin: auto;
-    color: red;
-
+    font-size: 2rem;
 }
+
 
 .cart-box-footer {
     display: flex;
