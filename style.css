@@ -160,7 +160,8 @@ body {
 .pagingElement:Active,
 .add-btn:active,
 .cart-box-delete:active,
-.btn-search:active {
+.btn-search:active,
+.social *:active {
     transform: translateX(1.5px) translateY(1.5px);
 }
 
@@ -268,28 +269,26 @@ body {
 
 
 .madeWith span {
-    color: aqua;
+    color:#1d6c9d;
 }
 
 .social>* {
-    /* width: 50px; */
-    /* height: 50px; */
+   
     font-size: 1.5rem;
-    margin: 10px;
+    margin: 8px;
     cursor: pointer;
-    color: aqua;
     text-decoration: none;
 }
 
-.social>:first-child:hover {
+.social>:first-child{
     color: var(--linkedin);
 }
 
-.social>:nth-child(2):hover {
+.social>:nth-child(2) {
     color: var(--gitHub);
 }
 
-.social>:nth-child(3):hover {
+.social>:nth-child(3) {
     color: var(--instagram);
 }
 
