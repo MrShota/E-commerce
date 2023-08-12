@@ -205,8 +205,8 @@ function addItemToCart(product, title, price) {
 
     // itemTotalText.innerText='';
     // itemTotalCount.innerText='';
-    itemTotalText.innerText=`Subtotal (items): + price`;
-    itemTotalCurrency.src='/img/dollar.png';
+    itemTotalText.innerText = `Subtotal (items): + price`;
+    itemTotalCurrency.src = '/img/dollar.png';
     itemTotalPrice.innerText = price;
     itemTotalBtn.innerText = 'Pay Now';
 
@@ -312,6 +312,20 @@ btnCart.addEventListener('click', () => {
 function renderCart() {
     if (cart.children.length == 0) {
         console.log(cart.children.length)
+        const container = document.getElementById('container');
+        const containerWrapper = document.getElementById('containerWrapper')
+        containerWrapper.remove();
+
+        const emptyCart = document.createElement('div');
+        const emptyCartImg = document.createElement('img');
+        const emptyCartText = document.createElement('p');
+        emptyCartText.innerText = 'Cart is empty';
+        emptyCart.classList.add('empty-cart');
+
+        emptyCart.append(emptyCartImg, emptyCartText);
+        emptyCartImg.src = '/img/empty-cart.png';
+        container.insertBefore(emptyCart, container.children[1]);
+
     } else {
         console.log('error');
         assign();

@@ -475,3 +475,15 @@ body {
     color: white;
     cursor: pointer;
 }
+.empty-cart{
+    width: 25%;
+    height: 60%;
+    padding-top: 100px;
+    margin-inline: auto;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.empty-cart> img{
+    width: 500px;
+    height: 400px;
+}
