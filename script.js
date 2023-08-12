@@ -163,12 +163,12 @@ function addItemToCart(product, title, price) {
 
     const itemTotal = document.createElement('div');
     const itemTotalText = document.createElement('div');
-    const itemTotalCount = document.createElement('div');
-    const itemTotalText2 = document.createElement('div');
+    // const itemTotalCount = document.createElement('div');
+    // const itemTotalText2 = document.createElement('div');
     const itemTotalCurrency = document.createElement('img');
     const itemTotalPrice = document.createElement('div');
     const itemTotalBtn = document.createElement('button');
-    itemTotal.append(itemTotalText, itemTotalCount, itemTotalText2, itemTotalCurrency, itemTotalPrice, itemTotalBtn);
+    itemTotal.append(itemTotalText, itemTotalCurrency, itemTotalPrice, itemTotalBtn);
 
     //class name's
     cartContainer.classList.add('cart-container');
@@ -186,8 +186,8 @@ function addItemToCart(product, title, price) {
 
     itemTotal.classList.add('item-total')
     itemTotalText.classList.add('item-total-text');
-    itemTotalCount.classList.add('item-total-count');
-    itemTotalText2.classList.add('item-total-text2');
+    // itemTotalCount.classList.add('item-total-count');
+    // itemTotalText2.classList.add('item-total-text2');
     itemTotalCurrency.classList.add('item-total-currency');
     itemTotalPrice.classList.add('item-total-price');
     itemTotalBtn.classList.add('item-total-btn');
