@@ -356,17 +356,63 @@ body {
 }
 
 
-.cart-container{
-    width:70%;
+.cart-container {
+    width: 60%;
     height: 90%;
     background-color: yellowgreen;
     margin-inline: auto;
-}
-.item{
-    width: 80%;
-    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.item-total{
+.item {
+    width: 80%;
+    height: 100px;
+    background-color: red;
+    display: flex;
+    align-items: center;
+
+}
+
+.item-img {
+    width: 20px;
+    height: auto;
+}
+
+.item-title {
+    width: 200px;
+}
+
+.item-count {
+    width: 200px;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.item-count-minus {
+    width: 30px;
+}
+
+.item-price {
+    width: 100px;
+}
+
+
+
+
+
+
+
+.item-delete {
+    width: 30px;
+    height: 30px;
+    
+}
+
+.item-total {
     width: 20%;
+    height: 30px;
+    background-color: #0A66C2;
 }

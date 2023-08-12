@@ -104,7 +104,7 @@ function renderProducts(products) {
         addBtn.innerText = 'Add to Cart'
 
         addBtn.addEventListener('click', () => {
-            addItemToCart(productTitle.innerText, product.price, addBtn);
+            addItemToCart(product.images[0], product.title, product.price);
         })
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
         mainContent.append(productElement)
@@ -141,64 +141,73 @@ function handlePage(pageIndex, limit) {
     getProductsFromServer(limit, skip)
 }
 
-function addItemToCart(title, price) {
-    const cartBox = document.createElement('div');
-    const cartBoxTitle = document.createElement('div');
-    const cartBoxPrice = document.createElement('div');
-    const cartBoxDelete = document.createElement('img');
-    cartBoxDelete.src = 'delete.png'
+function addItemToCart(img, title, price) {
+
+    const cartContainer = document.createElement('div');
+    const item = document.createElement('div');
+    const itemImg = document.createElement('img');
+    const itemTitle = document.createElement('div');
+
+    const itemCount = document.createElement('div');
+    const itemCountMinus = document.createElement('div');
+    const itemCountText = document.createElement('div');
+    const itemCountPlus = document.createElement('div');
+    itemCount.append(itemCountMinus, itemCountText, itemCountPlus);
+
+    const itemPrice = document.createElement('div');
+    const itemDelete = document.createElement('img');
+    const itemLine = document.createElement('div');
+    item.append(itemImg, itemTitle, itemCount, itemPrice, itemDelete, itemLine);
 
 
-    cartBox.classList.add('cart-box');
-    cartBoxTitle.classList.add('cart-box-title');
-    cartBoxPrice.classList.add('cart-box-price');
-    cartBoxDelete.classList.add('cart-box-delete');
+    const itemTotal = document.createElement('div');
+    const itemTotalText = document.createElement('div');
+    const itemTotalCount = document.createElement('div');
+    const itemTotalText2 = document.createElement('div');
+    const itemTotalCurrency = document.createElement('div');
+    const itemTotalPrice = document.createElement('div');
+    const itemTotalBtn = document.createElement('button');
+    itemTotal.append(itemTotalText, itemTotalCount, itemTotalText2, itemTotalCurrency, itemTotalPrice, itemTotalBtn);
+
+    //class name's
+    cartContainer.classList.add('cart-container');
+    item.classList.add('item');
+    itemImg.classList.add('item-img');
+    itemTitle.classList.add('item-title');
+    itemPrice.classList.add('item-price');
+    itemDelete.classList.add('item-delete');
+    itemTotal.classList.add('item-total');
+    itemCount.classList.add('item-count');
+    itemCountMinus.classList.add('item-count-minus');
+    itemCountText.classList.add('item-count-text');
+    itemCountPlus.classList.add('item-count=plus');
+
+    // assign values
+    itemImg.innerText = img;
+    itemTitle.innerText = title;
+    itemPrice.innerText = price;
+    itemDelete.src = '/delete.png';
+    itemCountMinus.innerText ='-';
+    itemCountText.innerText ='0';
+    // itemCountPlus.innerText `+`;
 
 
-    cartBoxTitle.innerText = title;
-    cartBoxPrice.innerText = price;
 
-    cartBoxDelete.addEventListener('click', () => {
-        cartBox.remove();
-        cartBoxFooterText.innerText = '';
-        itemInCart.innerText--;
+    cartContainer.append(item, itemTotal);
 
-    })
 
-    cartBox.append(cartBoxTitle, cartBoxPrice, cartBoxDelete);
-    const cart = document.getElementById('cart');
-    cart.prepend(cartBox);
 
-    const itemInCart = document.getElementById('itemInCart');
-    itemInCart.innerText = cart.children.length - 1;
-
-    if (itemInCart.innerHTML == 1) {
-        cartBoxFooterText.innerText = price;
-
-    } else {
-        cartBoxFooterText.innerText = price + price;
-    }
+    assign(cartContainer)
 
 }
 
-// const btnCart = document.getElementById('btnCart');
-// btnCart.addEventListener('mouseenter', () => {
-//     const cart = document.getElementById('cart');
-//     cart.style.display = 'block'
-// })
-// btnCart.addEventListener('mouseleave', () => {
-//     const cart = document.getElementById('cart');
-//     cart.style.display = 'none'
-// })
-// const cart = document.getElementById('cart');
-// cart.addEventListener('mouseenter', () => {
-//     const cart = document.getElementById('cart');
-//     cart.style.display = 'block'
-// })
-// cart.addEventListener('mouseleave', () => {
-//     const cart = document.getElementById('cart');
-//     cart.style.display = 'none'
-// })
+function assign(cartContainer) {
+    const container = document.getElementById('container');
+    const containerWrapper=document.getElementById('containerWrapper')
+    containerWrapper.remove();
+    container.insertBefore(cartContainer, container.children[1]);
+}
+
 
 btnSearch.addEventListener('click', () => {
     const searchInput = document.getElementById('searchInput').value;
@@ -284,40 +293,16 @@ btnCart.addEventListener('click', () => {
 })
 
 function renderCart() {
-    //create cart div's
-    const cartContainer = document.createElement('div');
+    if (cart.children.length == 0) {
+        console.log('empty')
+    } else {
+        console.log('error');
+        //remove content, add cart
+        assign();
 
-    const item = document.createElement('div');
-    const itemImg = document.createElement('img');
-    const itemTitle = document.createElement('div');
 
-    const itemCount = document.createElement('div');
-    const itemCountMinus = document.createElement('div');
-    const itemCountText = document.createElement('div');
-    const itemCountPlus = document.createElement('div');
-    itemCount.append(itemCountMinus, itemCountText, itemCountPlus);
-
-    const itemPrice = document.createElement('div');
-    const itemDelete = document.createElement('div');
-
-    const itemTotal = document.createElement('div');
-    const itemTotalText = document.createElement('div');
-    const itemTotalCount = document.createElement('div');
-    const itemTotalText2 = document.createElement('div');
-    const itemTotalCurrency = document.createElement('div');
-    const itemTotalPrice = document.createElement('div');
-    const itemTotalBtn = document.createElement('button');
-    itemTotal.append(itemTotalText, itemTotalCount, itemTotalText2, itemTotalCurrency, itemTotalPrice, itemTotalBtn);
-
-    cartContainer.classList.add('cart-container');
-    item.classList.add('item')
-    itemTotal.classList.add('item-total')
-
-    item.append(itemImg, itemTitle, itemCount, itemPrice, itemDelete);
-    cartContainer.append(item, itemTotal);
-    //remove content, add cart
-    const container = document.getElementById('container');
-    containerWrapper.remove();
-    container.insertBefore(cartContainer, container.children[1]);
+    }
 
 }
+
+
