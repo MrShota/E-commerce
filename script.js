@@ -181,24 +181,24 @@ function addItemToCart(title, price) {
 
 }
 
-const btnCart = document.getElementById('btnCart');
-btnCart.addEventListener('mouseenter', () => {
-    const cart = document.getElementById('cart');
-    cart.style.display = 'block'
-})
-btnCart.addEventListener('mouseleave', () => {
-    const cart = document.getElementById('cart');
-    cart.style.display = 'none'
-})
-const cart = document.getElementById('cart');
-cart.addEventListener('mouseenter', () => {
-    const cart = document.getElementById('cart');
-    cart.style.display = 'block'
-})
-cart.addEventListener('mouseleave', () => {
-    const cart = document.getElementById('cart');
-    cart.style.display = 'none'
-})
+// const btnCart = document.getElementById('btnCart');
+// btnCart.addEventListener('mouseenter', () => {
+//     const cart = document.getElementById('cart');
+//     cart.style.display = 'block'
+// })
+// btnCart.addEventListener('mouseleave', () => {
+//     const cart = document.getElementById('cart');
+//     cart.style.display = 'none'
+// })
+// const cart = document.getElementById('cart');
+// cart.addEventListener('mouseenter', () => {
+//     const cart = document.getElementById('cart');
+//     cart.style.display = 'block'
+// })
+// cart.addEventListener('mouseleave', () => {
+//     const cart = document.getElementById('cart');
+//     cart.style.display = 'none'
+// })
 
 btnSearch.addEventListener('click', () => {
     const searchInput = document.getElementById('searchInput').value;
