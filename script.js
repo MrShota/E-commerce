@@ -149,22 +149,23 @@ function addItemToCart(product, title, price) {
     const itemTitle = document.createElement('div');
 
     const itemCount = document.createElement('div');
-    const itemCountMinus = document.createElement('div');
+    const itemCountMinus = document.createElement('img');
     const itemCountText = document.createElement('div');
-    const itemCountPlus = document.createElement('div');
+    const itemCountPlus = document.createElement('img');
     itemCount.append(itemCountMinus, itemCountText, itemCountPlus);
 
+    const itemCurrency = document.createElement('img');
     const itemPrice = document.createElement('div');
     const itemDelete = document.createElement('img');
     const itemLine = document.createElement('div');
-    item.append(itemImg, itemTitle, itemCount, itemPrice, itemDelete, itemLine);
+    item.append(itemImg, itemTitle, itemCount, itemCurrency, itemPrice, itemDelete, itemLine);
 
 
     const itemTotal = document.createElement('div');
     const itemTotalText = document.createElement('div');
     const itemTotalCount = document.createElement('div');
     const itemTotalText2 = document.createElement('div');
-    const itemTotalCurrency = document.createElement('div');
+    const itemTotalCurrency = document.createElement('img');
     const itemTotalPrice = document.createElement('div');
     const itemTotalBtn = document.createElement('button');
     itemTotal.append(itemTotalText, itemTotalCount, itemTotalText2, itemTotalCurrency, itemTotalPrice, itemTotalBtn);
@@ -181,17 +182,33 @@ function addItemToCart(product, title, price) {
     itemCountMinus.classList.add('item-count-minus');
     itemCountText.classList.add('item-count-text');
     itemCountPlus.classList.add('item-count-plus');
+    itemCurrency.classList.add('item-currency')
+
+    itemTotal.classList.add('item-total')
+    itemTotalText.classList.add('item-total-text');
+    itemTotalCount.classList.add('item-total-count');
+    itemTotalText2.classList.add('item-total-text2');
+    itemTotalCurrency.classList.add('item-total-currency');
+    itemTotalPrice.classList.add('item-total-price');
+    itemTotalBtn.classList.add('item-total-btn');
 
     // assign values
-    // itemImg.innerText = product.images[0];
+    itemImg.src = product.images[0];
     itemTitle.innerText = title;
     itemPrice.innerText = price;
-    itemDelete.src = '/delete.png';
-    itemCountMinus.innerText ='-';
-    itemCountText.innerText ='0';
-    itemCountPlus.innerText= `+`;
+    itemDelete.src = '/img/delete.png';
+    itemCountMinus.src = '/img/minus.png'
+    itemCountText.innerText = '2';
+    itemCountPlus.src = `/img/plus.png`;
+    itemCurrency.src = '/img/dollar.png'
 
 
+    // itemTotalText.innerText='';
+    // itemTotalCount.innerText='';
+    itemTotalText.innerText=`Subtotal (items): + price`;
+    itemTotalCurrency.src='/img/dollar.png';
+    itemTotalPrice.innerText = price;
+    itemTotalBtn.innerText = 'Pay Now';
 
     cartContainer.append(item, itemTotal);
 
@@ -203,7 +220,7 @@ function addItemToCart(product, title, price) {
 
 function assign(cartContainer) {
     const container = document.getElementById('container');
-    const containerWrapper=document.getElementById('containerWrapper')
+    const containerWrapper = document.getElementById('containerWrapper')
     containerWrapper.remove();
     container.insertBefore(cartContainer, container.children[1]);
 }
@@ -264,7 +281,7 @@ function renderSearchProduct(input) {
 
                 const errorImg = document.createElement('img');
                 errorImg.classList.add('error-img');
-                errorImg.src = 'not-found.png';
+                errorImg.src = '/img/not-found.png';
 
                 const errorText = document.createElement('span');
                 errorText.classList.add('error-text');
