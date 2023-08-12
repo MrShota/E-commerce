@@ -118,10 +118,6 @@ body {
     display: flex;
 }
 
-.pagingElement {
-    cursor: pointer;
-}
-
 .footer {
     width: 100%;
     height: 90px;
@@ -233,16 +229,19 @@ body {
 }
 
 .paging {
-    width: 90%;
+    width: 20%;
     height: 25px;
     display: flex;
     justify-content: space-evenly;
     margin-inline: auto;
 }
 
+
+
 .pagingElement {
     width: 20px;
     margin: auto;
+    cursor: pointer;
 }
 
 .error-container {
@@ -269,18 +268,18 @@ body {
 
 
 .madeWith span {
-    color:#1d6c9d;
+    color: #1d6c9d;
 }
 
 .social>* {
-   
+
     font-size: 1.5rem;
     margin: 8px;
     cursor: pointer;
     text-decoration: none;
 }
 
-.social>:first-child{
+.social>:first-child {
     color: var(--linkedin);
 }
 

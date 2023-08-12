@@ -1,6 +1,5 @@
 const mainContent = document.getElementById('mainContent');
 const btnSearch = document.getElementById('btnSearch');
-// getCategoriesFromServer();
 getProductsFromServer(12, 0);
 
 (function getCategoriesFromServer() {
@@ -107,7 +106,6 @@ function renderProducts(products) {
         addBtn.addEventListener('click', () => {
             addItemToCart(productTitle.innerText, product.price, addBtn);
         })
-        // console.log(productPriceText.innerText)
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
         mainContent.append(productElement)
     }
@@ -115,27 +113,29 @@ function renderProducts(products) {
 }
 
 function paging(totalCount, limit) {
-    const mainContent = document.getElementById('mainContent');
+    // const containerWrapper = document.getElementById('containerWrapper');
     const paging = document.createElement('div');
     paging.classList.add('paging')
+    
     for (let i = 0; i < totalCount / limit; i++) {
         const pagingElement = document.createElement('div');
         pagingElement.classList.add('pagingElement');
         const pageIndex = i + 1;
         pagingElement.innerText = pageIndex;
-        paging.append(pagingElement);
-        mainContent.append(paging);
-
-
+        
         pagingElement.addEventListener('click', () => {
-            handlePage(pageIndex, limit)
-
+            handlePage(pageIndex, limit);
+            // pagingElement.style.color='red'
         })
+        paging.append(pagingElement);
     }
+
+    mainContent.append(paging);
 }
 
 function handlePage(pageIndex, limit) {
-    const mainContent = document.getElementById('mainContent');
+    
+    // const mainContent = document.getElementById('mainContent');
     mainContent.innerText = '';
     const skip = (pageIndex - 1) * limit
     getProductsFromServer(limit, skip)
@@ -261,7 +261,7 @@ function renderSearchProduct(input) {
                 errorText.classList.add('error-text');
                 errorText.innerText = 'Product not found!';
 
-                errorContainer.append( errorText, errorImg);
+                errorContainer.append(errorText, errorImg);
                 mainContent.append(errorContainer);
             }
 
