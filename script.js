@@ -104,7 +104,7 @@ function renderProducts(products) {
         addBtn.innerText = 'Add to Cart'
 
         addBtn.addEventListener('click', () => {
-            addItemToCart(product.images[0], product.title, product.price);
+            addItemToCart(product, product.title, product.price);
         })
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
         mainContent.append(productElement)
@@ -141,7 +141,7 @@ function handlePage(pageIndex, limit) {
     getProductsFromServer(limit, skip)
 }
 
-function addItemToCart(img, title, price) {
+function addItemToCart(product, title, price) {
 
     const cartContainer = document.createElement('div');
     const item = document.createElement('div');
@@ -180,16 +180,16 @@ function addItemToCart(img, title, price) {
     itemCount.classList.add('item-count');
     itemCountMinus.classList.add('item-count-minus');
     itemCountText.classList.add('item-count-text');
-    itemCountPlus.classList.add('item-count=plus');
+    itemCountPlus.classList.add('item-count-plus');
 
     // assign values
-    itemImg.innerText = img;
+    // itemImg.innerText = product.images[0];
     itemTitle.innerText = title;
     itemPrice.innerText = price;
     itemDelete.src = '/delete.png';
     itemCountMinus.innerText ='-';
     itemCountText.innerText ='0';
-    // itemCountPlus.innerText `+`;
+    itemCountPlus.innerText= `+`;
 
 
 

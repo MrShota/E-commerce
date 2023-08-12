@@ -385,14 +385,19 @@ body {
 }
 
 .item-count {
-    width: 200px;
+    width: 100px;
+    height: 40px;
     border: 1px solid gray;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
 }
 
-.item-count-minus {
-    width: 30px;
+.item-count-minus,
+.item-count-plus,
+.item-count-text {
+    width: 20px;
 }
 
 .item-price {
@@ -408,7 +413,7 @@ body {
 .item-delete {
     width: 30px;
     height: 30px;
-    
+
 }
 
 .item-total {
