@@ -311,10 +311,9 @@ btnCart.addEventListener('click', () => {
 
 function renderCart() {
     if (cart.children.length == 0) {
-        console.log('empty')
+        console.log(cart.children.length)
     } else {
         console.log('error');
-        //remove content, add cart
         assign();
 
 
