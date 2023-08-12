@@ -116,13 +116,13 @@ function paging(totalCount, limit) {
     // const containerWrapper = document.getElementById('containerWrapper');
     const paging = document.createElement('div');
     paging.classList.add('paging')
-    
+
     for (let i = 0; i < totalCount / limit; i++) {
         const pagingElement = document.createElement('div');
         pagingElement.classList.add('pagingElement');
         const pageIndex = i + 1;
         pagingElement.innerText = pageIndex;
-        
+
         pagingElement.addEventListener('click', () => {
             handlePage(pageIndex, limit);
             // pagingElement.style.color='red'
@@ -134,7 +134,7 @@ function paging(totalCount, limit) {
 }
 
 function handlePage(pageIndex, limit) {
-    
+
     // const mainContent = document.getElementById('mainContent');
     mainContent.innerText = '';
     const skip = (pageIndex - 1) * limit
@@ -269,13 +269,55 @@ function renderSearchProduct(input) {
 }
 const imgLogo = document.getElementById('imgLogo');
 imgLogo.addEventListener('click', () => {
-    mainContent.innerHTML = ''
     getProductsFromServer(12, 0);
 
 })
 const imgLogo2 = document.getElementById('imgLogo2');
 imgLogo2.addEventListener('click', () => {
-    mainContent.innerHTML = ''
     getProductsFromServer(12, 0);
 
 })
+
+const btnCart = document.getElementById('btnCart');
+btnCart.addEventListener('click', () => {
+    renderCart();
+})
+
+function renderCart() {
+    //create cart div's
+    const cartContainer = document.createElement('div');
+
+    const item = document.createElement('div');
+    const itemImg = document.createElement('img');
+    const itemTitle = document.createElement('div');
+
+    const itemCount = document.createElement('div');
+    const itemCountMinus = document.createElement('div');
+    const itemCountText = document.createElement('div');
+    const itemCountPlus = document.createElement('div');
+    itemCount.append(itemCountMinus, itemCountText, itemCountPlus);
+
+    const itemPrice = document.createElement('div');
+    const itemDelete = document.createElement('div');
+
+    const itemTotal = document.createElement('div');
+    const itemTotalText = document.createElement('div');
+    const itemTotalCount = document.createElement('div');
+    const itemTotalText2 = document.createElement('div');
+    const itemTotalCurrency = document.createElement('div');
+    const itemTotalPrice = document.createElement('div');
+    const itemTotalBtn = document.createElement('button');
+    itemTotal.append(itemTotalText, itemTotalCount, itemTotalText2, itemTotalCurrency, itemTotalPrice, itemTotalBtn);
+
+    cartContainer.classList.add('cart-container');
+    item.classList.add('item')
+    itemTotal.classList.add('item-total')
+
+    item.append(itemImg, itemTitle, itemCount, itemPrice, itemDelete);
+    cartContainer.append(item, itemTotal);
+    //remove content, add cart
+    const container = document.getElementById('container');
+    containerWrapper.remove();
+    container.insertBefore(cartContainer, container.children[1]);
+
+}

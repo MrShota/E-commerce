@@ -35,7 +35,8 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 5px;
+    /* margin-top: 5px; */
+    position: fixed;
 }
 
 .img-logo {
@@ -116,6 +117,7 @@ body {
     margin-inline: auto;
     border-radius: 8px;
     display: flex;
+    padding-top: 60px;
 }
 
 .footer {
@@ -236,8 +238,6 @@ body {
     margin-inline: auto;
 }
 
-
-
 .pagingElement {
     width: 20px;
     margin: auto;
@@ -353,4 +353,20 @@ body {
 .cart-box-footer-btn {
     background-color: var(--btn);
     cursor: pointer;
+}
+
+
+.cart-container{
+    width:70%;
+    height: 90%;
+    background-color: yellowgreen;
+    margin-inline: auto;
+}
+.item{
+    width: 80%;
+    background-color: red;
+}
+
+.item-total{
+    width: 20%;
 }
