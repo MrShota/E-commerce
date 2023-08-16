@@ -2,6 +2,13 @@ const mainContent = document.getElementById('mainContent');
 const btnSearch = document.getElementById('btnSearch');
 getProductsFromServer(12, 0);
 
+const productData = {
+    img: '',
+    title: '',
+    price: '',
+    description: ''
+}
+
 (function getCategoriesFromServer() {
     fetch('https://dummyjson.com/products/categories')
         .then(res => res.json())
@@ -215,14 +222,15 @@ function addItemToCart(product, title, price) {
 
 
     assign(cartContainer)
+    // ProductData(product.images[0],title,price,product)
 
 }
 
 function assign(cartContainer) {
-    const container = document.getElementById('container');
-    const containerWrapper = document.getElementById('containerWrapper')
-    containerWrapper.remove();
-    container.insertBefore(cartContainer, container.children[1]);
+    // const container = document.getElementById('container');
+    // const containerWrapper = document.getElementById('containerWrapper')
+    // containerWrapper.remove();
+    // container.insertBefore(cartContainer, container.children[1]);
 }
 
 
@@ -312,27 +320,35 @@ btnCart.addEventListener('click', () => {
 function renderCart() {
     if (cart.children.length == 0) {
         console.log(cart.children.length)
-        const container = document.getElementById('container');
-        const containerWrapper = document.getElementById('containerWrapper')
-        containerWrapper.remove();
+        // const container = document.getElementById('container');
+        // const containerWrapper = document.getElementById('containerWrapper')
+        // containerWrapper.remove();
 
-        const emptyCart = document.createElement('div');
-        const emptyCartImg = document.createElement('img');
-        const emptyCartText = document.createElement('p');
-        emptyCartText.innerText = 'Cart is empty';
-        emptyCart.classList.add('empty-cart');
+        // const emptyCart = document.createElement('div');
+        // const emptyCartImg = document.createElement('img');
+        // const emptyCartText = document.createElement('p');
+        // emptyCartText.innerText = 'Cart is empty';
+        // emptyCart.classList.add('empty-cart');
 
-        emptyCart.append(emptyCartImg, emptyCartText);
-        emptyCartImg.src = '/img/empty-cart.png';
-        container.insertBefore(emptyCart, container.children[1]);
+        // emptyCart.append(emptyCartImg, emptyCartText);
+        // emptyCartImg.src = '/img/empty-cart.png';
+        // container.insertBefore(emptyCart, container.children[1]);
 
     } else {
         console.log('error');
-        assign();
+        // assign();
 
 
     }
 
 }
 
+
+// function ProductData(img, title, price, description) {
+//     this.img = img;
+//     this.title = title;
+//     this.price = price;
+//     this.description = description;
+// }
+// const item1=newItem()
 
