@@ -206,33 +206,34 @@ function addItemToCart(product) {
     itemPrice.innerText = product.price;
     itemDelete.src = '/img/delete.png';
     itemCountMinus.src = '/img/minus.png'
-    itemCountText.innerText = '2';
+    itemCountText.innerText = '3';
     itemCountPlus.src = `/img/plus.png`;
     itemCurrency.src = '/img/dollar.png'
 
 
     // itemTotalText.innerText='';
     // itemTotalCount.innerText='';
-    itemTotalText.innerText = `Subtotal (items): + price`;
+    itemTotalText.innerText = `Total (` + 0 +` items): `;
     itemTotalCurrency.src = '/img/dollar.png';
     itemTotalPrice.innerText = product.price;
     itemTotalBtn.innerText = 'Pay Now';
 
     cartContainer.append(item, itemTotal);
     // console.log(product)
+    mainContent.innerText = '';
+    mainContent.append(cartContainer)
 
-
-    assign(cartContainer)
+    // assign(cartContainer)
     // ProductData(product.images[0],title,price,product)
 
 }
 
-function assign(cartContainer) {
-    const container = document.getElementById('container');
-    const containerWrapper = document.getElementById('containerWrapper')
-    containerWrapper.remove();
-    container.insertBefore(cartContainer, container.children[1]);
-}
+// function assign(cartContainer) {
+//     const container = document.getElementById('container');
+//     const containerWrapper = document.getElementById('containerWrapper')
+// containerWrapper.remove();
+// container.insertBefore(cartContainer, container.children[1]);
+// }
 
 
 btnSearch.addEventListener('click', () => {
@@ -321,7 +322,7 @@ btnCart.addEventListener('click', () => {
 })
 
 function renderCart() {
-  
+
     const emptyCart = document.createElement('div');
     const emptyCartImg = document.createElement('img');
     const emptyCartText = document.createElement('p');
@@ -330,7 +331,7 @@ function renderCart() {
 
     emptyCart.append(emptyCartImg, emptyCartText);
     emptyCartImg.src = '/img/empty-cart.png';
-    mainContent.innerText='';
+    mainContent.innerText = '';
     mainContent.append(emptyCart)
 
 

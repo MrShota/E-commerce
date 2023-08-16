@@ -159,7 +159,8 @@ body {
 .add-btn:active,
 .cart-box-delete:active,
 .btn-search:active,
-.social *:active {
+.social *:active,
+.item-total-btn:active {
     transform: translateX(1.5px) translateY(1.5px);
 }
 
@@ -355,40 +356,53 @@ body {
     cursor: pointer;
 }
 
-
+/* კალათის დიზაინი */
 .cart-container {
-    width: 60%;
+    width: 80%;
     height: 90%;
     margin-inline: auto;
     display: flex;
-    /* justify-content: center; */
+
+    justify-content: space-evenly;
     /* align-items: center; */
 }
 
 .cart-container::before {
     content: 'My Cart';
     position: relative;
-    width: 100px;
-    height: 30px;
-    left: 90px;
-    top: 60px;
-    font-size: 1.3rem;
+    width: 120px;
+    height: 60px;
+    left: 50px;
+    top: 50px;
+    font-size: 1.8rem;
 
 }
 
 .item {
-    width: 80%;
+    width: 75%;
     height: 100px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid gray;
     margin-top: 100px;
+    margin-left: -30px;
+}
+
+.item-total {
+    width: 25%;
+    height: 100px;
+    margin: 100px 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    font-size: 1.1rem;
 }
 
 .item-img {
     width: 80px;
     /* height: 60px; */
     height: auto;
+    margin-left: 5px;
 }
 
 .item-title {
@@ -409,21 +423,25 @@ body {
 
 .item-count-text {
     width: 20px;
-
+    height: 20px;
+    /* margin-left:-80px; */
 }
 
-.item-count-text::before {
+/* .item-count-text::before {
     content: 'price';
     position: relative;
     left: 160px;
-    bottom: 30px;
-    font-size: 1.3rem;
-}
+    bottom: 40px;
+    font-size: 1.1rem;
+    font-style: oblique;
+} */
 
 .item-count-minus,
 .item-count-plus,
 .item-currency {
     width: 18px;
+    height: 20px;
+
 }
 
 .item-currency {
@@ -434,29 +452,15 @@ body {
     width: 100px;
 }
 
-
-
-
-
-
-
 .item-delete {
     width: 25px;
     height: 25px;
-    margin-left: 100px;
+    margin-left: 50px;
 
 }
 
-.item-total {
-    width: 25%;
-    height: 100px;
-    margin: 100px 10px 0;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 5px;
-    font-size: 1.1rem;
-}
-.item-total-currency{
+
+.item-total-currency {
     width: 15px;
     height: 15px;
     margin-top: 2px;
@@ -473,7 +477,8 @@ body {
     color: white;
     cursor: pointer;
 }
-.empty-cart{
+
+.empty-cart {
     width: 25%;
     height: 60%;
     padding-top: 100px;
@@ -481,7 +486,8 @@ body {
     font-size: 1.5rem;
     text-align: center;
 }
-.empty-cart> img{
+
+.empty-cart>img {
     width: 500px;
     height: 400px;
 }
