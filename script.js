@@ -321,11 +321,7 @@ btnCart.addEventListener('click', () => {
 })
 
 function renderCart() {
-    console.log(cart.children.length)
-    const container = document.getElementById('container');
-    const containerWrapper = document.getElementById('containerWrapper')
-    containerWrapper.remove();
-
+  
     const emptyCart = document.createElement('div');
     const emptyCartImg = document.createElement('img');
     const emptyCartText = document.createElement('p');
@@ -334,7 +330,8 @@ function renderCart() {
 
     emptyCart.append(emptyCartImg, emptyCartText);
     emptyCartImg.src = '/img/empty-cart.png';
-    container.insertBefore(emptyCart, container.children[1]);
+    mainContent.innerText='';
+    mainContent.append(emptyCart)
 
 
 
