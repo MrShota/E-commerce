@@ -7,7 +7,7 @@ const productData = {
     title: '',
     price: '',
     description: ''
-}
+};
 
 (function getCategoriesFromServer() {
     fetch('https://dummyjson.com/products/categories')
@@ -40,7 +40,7 @@ function getProductsByCategory(category) {
 }
 function renderProductByCategory(productByCategory) {
     mainContent.innerHTML = '';
-    for (let products of productByCategory) {
+    for (let product of productByCategory) {
         const productElement = document.createElement('div');
         const productTitle = document.createElement('div');
         const productImg = document.createElement('img');
@@ -55,14 +55,15 @@ function renderProductByCategory(productByCategory) {
         productDescription.classList.add('product-description');
         addBtn.classList.add('add-btn');
 
-        productTitle.innerText = products.title;
-        productImg.src = products.images[0];
-        productDescription.innerText = products.description;
-        productPrice.innerText = '$ ' + products.price;
+        productTitle.innerText = product.title;
+        productImg.src = product.images[0];
+        productDescription.innerText = product.description;
+        productPrice.innerText = '$ ' + product.price;
         addBtn.innerText = 'Add to Cart';
 
         addBtn.addEventListener('click', () => {
-            addItemToCart(productTitle.innerText, productPrice.innerText);
+            // console.log(product)
+            addItemToCart(product);
         })
 
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
@@ -111,7 +112,7 @@ function renderProducts(products) {
         addBtn.innerText = 'Add to Cart'
 
         addBtn.addEventListener('click', () => {
-            addItemToCart(product, product.title, product.price);
+            addItemToCart(product);
         })
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
         mainContent.append(productElement)
@@ -148,7 +149,7 @@ function handlePage(pageIndex, limit) {
     getProductsFromServer(limit, skip)
 }
 
-function addItemToCart(product, title, price) {
+function addItemToCart(product) {
 
     const cartContainer = document.createElement('div');
     const item = document.createElement('div');
@@ -201,8 +202,8 @@ function addItemToCart(product, title, price) {
 
     // assign values
     itemImg.src = product.images[0];
-    itemTitle.innerText = title;
-    itemPrice.innerText = price;
+    itemTitle.innerText = product.title;
+    itemPrice.innerText = product.price;
     itemDelete.src = '/img/delete.png';
     itemCountMinus.src = '/img/minus.png'
     itemCountText.innerText = '2';
@@ -214,11 +215,11 @@ function addItemToCart(product, title, price) {
     // itemTotalCount.innerText='';
     itemTotalText.innerText = `Subtotal (items): + price`;
     itemTotalCurrency.src = '/img/dollar.png';
-    itemTotalPrice.innerText = price;
+    itemTotalPrice.innerText = product.price;
     itemTotalBtn.innerText = 'Pay Now';
 
     cartContainer.append(item, itemTotal);
-
+    // console.log(product)
 
 
     assign(cartContainer)
@@ -227,10 +228,10 @@ function addItemToCart(product, title, price) {
 }
 
 function assign(cartContainer) {
-    // const container = document.getElementById('container');
-    // const containerWrapper = document.getElementById('containerWrapper')
-    // containerWrapper.remove();
-    // container.insertBefore(cartContainer, container.children[1]);
+    const container = document.getElementById('container');
+    const containerWrapper = document.getElementById('containerWrapper')
+    containerWrapper.remove();
+    container.insertBefore(cartContainer, container.children[1]);
 }
 
 
@@ -303,11 +304,13 @@ function renderSearchProduct(input) {
 }
 const imgLogo = document.getElementById('imgLogo');
 imgLogo.addEventListener('click', () => {
+    mainContent.innerText = '';
     getProductsFromServer(12, 0);
 
 })
 const imgLogo2 = document.getElementById('imgLogo2');
 imgLogo2.addEventListener('click', () => {
+    mainContent.innerText = '';
     getProductsFromServer(12, 0);
 
 })
@@ -318,28 +321,22 @@ btnCart.addEventListener('click', () => {
 })
 
 function renderCart() {
-    if (cart.children.length == 0) {
-        console.log(cart.children.length)
-        // const container = document.getElementById('container');
-        // const containerWrapper = document.getElementById('containerWrapper')
-        // containerWrapper.remove();
+    console.log(cart.children.length)
+    const container = document.getElementById('container');
+    const containerWrapper = document.getElementById('containerWrapper')
+    containerWrapper.remove();
 
-        // const emptyCart = document.createElement('div');
-        // const emptyCartImg = document.createElement('img');
-        // const emptyCartText = document.createElement('p');
-        // emptyCartText.innerText = 'Cart is empty';
-        // emptyCart.classList.add('empty-cart');
+    const emptyCart = document.createElement('div');
+    const emptyCartImg = document.createElement('img');
+    const emptyCartText = document.createElement('p');
+    emptyCartText.innerText = 'Cart is empty';
+    emptyCart.classList.add('empty-cart');
 
-        // emptyCart.append(emptyCartImg, emptyCartText);
-        // emptyCartImg.src = '/img/empty-cart.png';
-        // container.insertBefore(emptyCart, container.children[1]);
-
-    } else {
-        console.log('error');
-        // assign();
+    emptyCart.append(emptyCartImg, emptyCartText);
+    emptyCartImg.src = '/img/empty-cart.png';
+    container.insertBefore(emptyCart, container.children[1]);
 
 
-    }
 
 }
 
