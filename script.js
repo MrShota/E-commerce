@@ -115,10 +115,7 @@ function renderProducts(products) {
         addBtn.innerText = 'Add to Cart'
 
         addBtn.addEventListener('click', () => {
-            //* აითემების რაოდენობა ქართში
-            const itemInCart = document.getElementById('itemInCart');
-            itemInCart.style.display = 'block'
-            itemInCart.innerText++;
+
 
             addItemToCart(product);
         })
@@ -157,8 +154,23 @@ function handlePage(pageIndex, limit) {
     getProductsFromServer(limit, skip)
 }
 
-//* იქმნება სრულიად ქარდ კონტეინერი თავისი აითემით და ტოტალით
 function addItemToCart(product) {
+
+    //* აითემების რაოდენობა ქართში
+    const itemInCart = document.getElementById('itemInCart');
+    itemInCart.style.display = 'block'
+    itemInCart.innerText++;
+
+    //* იქმნება სრულიად ქარდ კონტეინერი თავისი აითემით და ტოტალით
+
+
+
+}
+function renderCart() {
+    const cartContainer = document.createElement('div');
+    cartContainer.classList.add('cart-container');
+
+    //item
     const item = document.createElement('div');
     const itemImg = document.createElement('img');
     const itemTitle = document.createElement('div');
@@ -175,21 +187,20 @@ function addItemToCart(product) {
     const itemLine = document.createElement('div');
     item.append(itemImg, itemTitle, itemCount, itemCurrency, itemPrice, itemDelete, itemLine);
 
-    //class name's
+    //item class name's
     item.classList.add('item');
     itemImg.classList.add('item-img');
     itemTitle.classList.add('item-title');
     itemPrice.classList.add('item-price');
     itemDelete.classList.add('item-delete');
 
-    // itemTotal.classList.add('item-total');
     itemCount.classList.add('item-count');
     itemCountMinus.classList.add('item-count-minus');
     itemCountText.classList.add('item-count-text');
     itemCountPlus.classList.add('item-count-plus');
     itemCurrency.classList.add('item-currency')
 
-    // assign values
+    // item assign values
     itemImg.src = product.images[0];
     itemTitle.innerText = product.title;
     itemPrice.innerText = product.price;
@@ -199,21 +210,14 @@ function addItemToCart(product) {
     itemCountPlus.src = `/img/plus.png`;
     itemCurrency.src = '/img/dollar.png'
 
-}
-function renderCart() {
-    const cartContainer = document.createElement('div');
-    cartContainer.classList.add('cart-container');
-    cartContainer.append(item);
-
-    mainContent.innerText = '';
-    mainContent.append(cartContainer)
-
+    //total
     const itemTotal = document.createElement('div');
     const itemTotalText = document.createElement('div');
     const itemTotalCurrency = document.createElement('img');
     const itemTotalPrice = document.createElement('div');
     const itemTotalBtn = document.createElement('button');
     itemTotal.append(itemTotalText, itemTotalCurrency, itemTotalPrice, itemTotalBtn);
+
     itemTotalText.classList.add('item-total-text');
     itemTotalCurrency.classList.add('item-total-currency');
     itemTotalPrice.classList.add('item-total-price');
@@ -222,6 +226,11 @@ function renderCart() {
     itemTotalCurrency.src = '/img/dollar.png';
     itemTotalPrice.innerText = product.price;
     itemTotalBtn.innerText = 'Pay Now';
+
+    cartContainer.append(item, itemTotal);
+
+    mainContent.innerText = '';
+    mainContent.append(cartContainer)
 }
 function renderEmptyCart() {
     const emptyCart = document.createElement('div');
@@ -335,12 +344,4 @@ function openCart() {
 
 }
 
-
-// function ProductData(img, title, price, description) {
-//     this.img = img;
-//     this.title = title;
-//     this.price = price;
-//     this.description = description;
-// }
-// const item1=newItem()
 
