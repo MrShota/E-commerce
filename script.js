@@ -1,5 +1,9 @@
 const mainContent = document.getElementById('mainContent');
 const btnSearch = document.getElementById('btnSearch');
+// const cartContainer = document.createElement('div');
+const item = document.createElement('div');
+
+
 getProductsFromServer(12, 0);
 
 //===========================
@@ -79,7 +83,6 @@ function getProductsFromServer(limit, skip) {
         });
 }
 function renderProducts(products) {
-
     for (let product of products) {
         const productElement = document.createElement('div');
         const productTitle = document.createElement('div');
@@ -111,14 +114,11 @@ function renderProducts(products) {
         addBtn.innerText = 'Add to Cart'
 
         addBtn.addEventListener('click', () => {
-
-
             addItemToCart(product);
         })
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
         mainContent.append(productElement)
     }
-
 }
 //===========================
 function paging(totalCount, limit) {
@@ -208,9 +208,17 @@ function renderSearchProduct(input) {
             }
 
         });
+    //=========================== 
 }
-//===========================
-(function renderCart() {
+//=========================== 
+function addItemToCart(product) {
+
+    //* აითემების რაოდენობა ქართში
+    const itemInCart = document.getElementById('itemInCart');
+    itemInCart.style.display = 'block'
+    itemInCart.innerText++;
+
+
     const cartContainer = document.createElement('div');
     cartContainer.classList.add('cart-container');
 
@@ -243,14 +251,15 @@ function renderSearchProduct(input) {
 
 
     //* ველიუს მინიჭება მგონი სხვაგან უბდა
-    // itemImg.src = product.images[0];
-    // itemTitle.innerText = product.title;
-    // itemPrice.innerText = product.price;
-    // itemDelete.src = '/img/delete.png';
-    // itemCountMinus.src = '/img/minus.png'
-    // itemCountText.innerText = '';
-    // itemCountPlus.src = `/img/plus.png`;
-    // itemCurrency.src = '/img/dollar.png'
+    itemDelete.src = '/img/delete.png';
+    itemCountMinus.src = '/img/minus.png'
+    itemCountText.innerText = '';
+    itemCountPlus.src = `/img/plus.png`;
+    itemCurrency.src = '/img/dollar.png';
+
+    itemImg.src = product.images[0];
+    itemTitle.innerText = product.title;
+    itemPrice.innerText =product.price;
 
     //total
     const total = document.createElement('div');
@@ -265,15 +274,24 @@ function renderSearchProduct(input) {
     totalBtn.classList.add('item-total-btn');
     totalText.innerText = `Total (` + 0 + ` items): `;
     totalCurrency.src = '/img/dollar.png';
-    // totalPrice.innerText = product.price;
+    totalPrice.innerText = product.price;
     totalBtn.innerText = 'Pay Now';
     total.append(totalText, totalCurrency, totalPrice, totalBtn);
 
     cartContainer.append(item, total);
 
-    // mainContent.innerText = '';
-    // mainContent.append(cartContainer)
-})()
+
+    mainContent.innerText = '';
+    mainContent.append(cartContainer)
+  
+    // itemData.img = product.images[0];
+    // itemData.title = product.title;
+    // itemData.price = product.price;
+}
+//=========================== 
+// function renderCart(product) {
+   
+// };
 function renderEmptyCart() {
     const emptyCart = document.createElement('div');
     const emptyCartImg = document.createElement('img');
@@ -287,6 +305,7 @@ function renderEmptyCart() {
     mainContent.append(emptyCart)
 }
 //===========================
+
 function addItemToCart(product) {
 
     //* აითემების რაოდენობა ქართში
@@ -294,24 +313,30 @@ function addItemToCart(product) {
     itemInCart.style.display = 'block'
     itemInCart.innerText++;
 
-    //* იქმნება სრულიად ქარდ კონტეინერი თავისი აითემით და ტოტალით
-
-
-
 }
 
+
+const btnCart = document.getElementById('btnCart');
+btnCart.addEventListener('click', () => {
+    openCart();
+})
 //* არენდერებს ქართ კონტეინერს ლოგიკით, თუ ცარიელია გამოიტანს სურათს თუ არა დახატავს ქართს
 function openCart() {
-    // const cartContainer = document.getElementsByClassName('cart-container');
-    // if (cartContainer.length === 0) {
-    //     renderEmptyCart();
-    //     console.log('0')
-    // } else {
-    console.log('more');
+    if (item.children.length === 0) {
+        // renderEmptyCart();
+        console.log('0')
+    } else {
+        renderCart();
+        console.log('more');
 
-    // }
+    }
 
 }
+
+
+
+
+
 
 btnSearch.addEventListener('click', () => {
     const searchInput = document.getElementById('searchInput').value;
@@ -337,10 +362,7 @@ imgLogo2.addEventListener('click', () => {
 
 })
 
-const btnCart = document.getElementById('btnCart');
-btnCart.addEventListener('click', () => {
-    openCart();
-})
+
 
 
 
