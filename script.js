@@ -2,13 +2,7 @@ const mainContent = document.getElementById('mainContent');
 const btnSearch = document.getElementById('btnSearch');
 getProductsFromServer(12, 0);
 
-// const productData = {
-//     img: '',
-//     title: '',
-//     price: '',
-//     description: ''
-// };
-
+//===========================
 (function getCategoriesFromServer() {
     fetch('https://dummyjson.com/products/categories')
         .then(res => res.json())
@@ -30,6 +24,7 @@ function renderCategories(categories) {
         })
     }
 }
+//===========================
 function getProductsByCategory(category) {
 
     fetch(`https://dummyjson.com/products/category/${category}`)
@@ -74,6 +69,7 @@ function renderProductByCategory(productByCategory) {
     }
 
 }
+//===========================
 function getProductsFromServer(limit, skip) {
     fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
         .then(res => res.json())
@@ -124,7 +120,7 @@ function renderProducts(products) {
     }
 
 }
-
+//===========================
 function paging(totalCount, limit) {
     // const containerWrapper = document.getElementById('containerWrapper');
     const paging = document.createElement('div');
@@ -145,7 +141,6 @@ function paging(totalCount, limit) {
 
     mainContent.append(paging);
 }
-
 function handlePage(pageIndex, limit) {
 
     // const mainContent = document.getElementById('mainContent');
@@ -153,105 +148,7 @@ function handlePage(pageIndex, limit) {
     const skip = (pageIndex - 1) * limit
     getProductsFromServer(limit, skip)
 }
-
-function addItemToCart(product) {
-
-    //* აითემების რაოდენობა ქართში
-    const itemInCart = document.getElementById('itemInCart');
-    itemInCart.style.display = 'block'
-    itemInCart.innerText++;
-
-    //* იქმნება სრულიად ქარდ კონტეინერი თავისი აითემით და ტოტალით
-
-
-
-}
-function renderCart() {
-    const cartContainer = document.createElement('div');
-    cartContainer.classList.add('cart-container');
-
-    //item
-    const item = document.createElement('div');
-    const itemImg = document.createElement('img');
-    const itemTitle = document.createElement('div');
-
-    const itemCount = document.createElement('div');
-    const itemCountMinus = document.createElement('img');
-    const itemCountText = document.createElement('div');
-    const itemCountPlus = document.createElement('img');
-    itemCount.append(itemCountMinus, itemCountText, itemCountPlus);
-
-    const itemCurrency = document.createElement('img');
-    const itemPrice = document.createElement('div');
-    const itemDelete = document.createElement('img');
-    const itemLine = document.createElement('div');
-    item.append(itemImg, itemTitle, itemCount, itemCurrency, itemPrice, itemDelete, itemLine);
-
-    //item class name's
-    item.classList.add('item');
-    itemImg.classList.add('item-img');
-    itemTitle.classList.add('item-title');
-    itemPrice.classList.add('item-price');
-    itemDelete.classList.add('item-delete');
-
-    itemCount.classList.add('item-count');
-    itemCountMinus.classList.add('item-count-minus');
-    itemCountText.classList.add('item-count-text');
-    itemCountPlus.classList.add('item-count-plus');
-    itemCurrency.classList.add('item-currency')
-
-    // item assign values
-    itemImg.src = product.images[0];
-    itemTitle.innerText = product.title;
-    itemPrice.innerText = product.price;
-    itemDelete.src = '/img/delete.png';
-    itemCountMinus.src = '/img/minus.png'
-    itemCountText.innerText = '';
-    itemCountPlus.src = `/img/plus.png`;
-    itemCurrency.src = '/img/dollar.png'
-
-    //total
-    const itemTotal = document.createElement('div');
-    const itemTotalText = document.createElement('div');
-    const itemTotalCurrency = document.createElement('img');
-    const itemTotalPrice = document.createElement('div');
-    const itemTotalBtn = document.createElement('button');
-    itemTotal.append(itemTotalText, itemTotalCurrency, itemTotalPrice, itemTotalBtn);
-
-    itemTotalText.classList.add('item-total-text');
-    itemTotalCurrency.classList.add('item-total-currency');
-    itemTotalPrice.classList.add('item-total-price');
-    itemTotalBtn.classList.add('item-total-btn');
-    itemTotalText.innerText = `Total (` + 0 + ` items): `;
-    itemTotalCurrency.src = '/img/dollar.png';
-    itemTotalPrice.innerText = product.price;
-    itemTotalBtn.innerText = 'Pay Now';
-
-    cartContainer.append(item, itemTotal);
-
-    mainContent.innerText = '';
-    mainContent.append(cartContainer)
-}
-function renderEmptyCart() {
-    const emptyCart = document.createElement('div');
-    const emptyCartImg = document.createElement('img');
-    const emptyCartText = document.createElement('p');
-    emptyCartText.innerText = 'Cart is empty';
-    emptyCart.classList.add('empty-cart');
-
-    emptyCart.append(emptyCartImg, emptyCartText);
-    emptyCartImg.src = '/img/empty-cart.png';
-    mainContent.innerText = '';
-    mainContent.append(emptyCart)
-}
-
-btnSearch.addEventListener('click', () => {
-    const searchInput = document.getElementById('searchInput').value;
-    // console.log(searchInput);
-    renderSearchProduct(searchInput);
-
-})
-
+//===========================
 function renderSearchProduct(input) {
     mainContent.innerText = '';
 
@@ -312,6 +209,121 @@ function renderSearchProduct(input) {
 
         });
 }
+//===========================
+(function renderCart() {
+    const cartContainer = document.createElement('div');
+    cartContainer.classList.add('cart-container');
+
+    //item
+    const item = document.createElement('div');
+
+    const itemImg = document.createElement('img');
+    const itemTitle = document.createElement('div');
+    const itemCount = document.createElement('div');
+    const itemCountMinus = document.createElement('img');
+    const itemCountText = document.createElement('div');
+    const itemCountPlus = document.createElement('img');
+    itemCount.append(itemCountMinus, itemCountText, itemCountPlus);
+    const itemCurrency = document.createElement('img');
+    const itemPrice = document.createElement('div');
+    const itemDelete = document.createElement('img');
+    const itemLine = document.createElement('div');
+    item.append(itemImg, itemTitle, itemCount, itemCurrency, itemPrice, itemDelete, itemLine);
+
+    item.classList.add('item');
+    itemImg.classList.add('item-img');
+    itemTitle.classList.add('item-title');
+    itemPrice.classList.add('item-price');
+    itemDelete.classList.add('item-delete');
+    itemCount.classList.add('item-count');
+    itemCountMinus.classList.add('item-count-minus');
+    itemCountText.classList.add('item-count-text');
+    itemCountPlus.classList.add('item-count-plus');
+    itemCurrency.classList.add('item-currency')
+
+
+    //* ველიუს მინიჭება მგონი სხვაგან უბდა
+    // itemImg.src = product.images[0];
+    // itemTitle.innerText = product.title;
+    // itemPrice.innerText = product.price;
+    // itemDelete.src = '/img/delete.png';
+    // itemCountMinus.src = '/img/minus.png'
+    // itemCountText.innerText = '';
+    // itemCountPlus.src = `/img/plus.png`;
+    // itemCurrency.src = '/img/dollar.png'
+
+    //total
+    const total = document.createElement('div');
+
+    const totalText = document.createElement('div');
+    const totalCurrency = document.createElement('img');
+    const totalPrice = document.createElement('div');
+    const totalBtn = document.createElement('button');
+    totalText.classList.add('item-total-text');
+    totalCurrency.classList.add('item-total-currency');
+    totalPrice.classList.add('item-total-price');
+    totalBtn.classList.add('item-total-btn');
+    totalText.innerText = `Total (` + 0 + ` items): `;
+    totalCurrency.src = '/img/dollar.png';
+    // totalPrice.innerText = product.price;
+    totalBtn.innerText = 'Pay Now';
+    total.append(totalText, totalCurrency, totalPrice, totalBtn);
+
+    cartContainer.append(item, total);
+
+    // mainContent.innerText = '';
+    // mainContent.append(cartContainer)
+})()
+function renderEmptyCart() {
+    const emptyCart = document.createElement('div');
+    const emptyCartImg = document.createElement('img');
+    const emptyCartText = document.createElement('p');
+    emptyCartText.innerText = 'Cart is empty';
+    emptyCart.classList.add('empty-cart');
+
+    emptyCart.append(emptyCartImg, emptyCartText);
+    emptyCartImg.src = '/img/empty-cart.png';
+    mainContent.innerText = '';
+    mainContent.append(emptyCart)
+}
+//===========================
+function addItemToCart(product) {
+
+    //* აითემების რაოდენობა ქართში
+    const itemInCart = document.getElementById('itemInCart');
+    itemInCart.style.display = 'block'
+    itemInCart.innerText++;
+
+    //* იქმნება სრულიად ქარდ კონტეინერი თავისი აითემით და ტოტალით
+
+
+
+}
+
+//* არენდერებს ქართ კონტეინერს ლოგიკით, თუ ცარიელია გამოიტანს სურათს თუ არა დახატავს ქართს
+function openCart() {
+    // const cartContainer = document.getElementsByClassName('cart-container');
+    // if (cartContainer.length === 0) {
+    //     renderEmptyCart();
+    //     console.log('0')
+    // } else {
+    console.log('more');
+
+    // }
+
+}
+
+btnSearch.addEventListener('click', () => {
+    const searchInput = document.getElementById('searchInput').value;
+    // console.log(searchInput);
+    renderSearchProduct(searchInput);
+
+})
+
+
+
+
+
 const imgLogo = document.getElementById('imgLogo');
 imgLogo.addEventListener('click', () => {
     mainContent.innerText = '';
@@ -330,18 +342,6 @@ btnCart.addEventListener('click', () => {
     openCart();
 })
 
-//* არენდერებს ქართ კონტეინერს ლოგიკით, თუ ცარიელია გამოიტანს სურათს თუ არა დახატავს ქართს
-function openCart() {
-    const cartContainer = document.getElementsByClassName('cart-container');
-    if (cartContainer.length === 0) {
-        renderEmptyCart();
-        console.log('0')
-    } else {
-        renderCart();
-        console.log('more');
 
-    }
-
-}
 
 
