@@ -62,8 +62,11 @@ function renderProductByCategory(productByCategory) {
         addBtn.innerText = 'Add to Cart';
 
         addBtn.addEventListener('click', () => {
-            // console.log(product)
-            addItemToCart(product);
+            //* აითემების რაოდენობა ქართში
+            const itemInCart = document.getElementById('itemInCart');
+            itemInCart.style.display = 'block'
+            itemInCart.innerText++;
+            // addItemToCart(product);
         })
 
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
@@ -114,11 +117,10 @@ function renderProducts(products) {
         addBtn.addEventListener('click', () => {
             //* აითემების რაოდენობა ქართში
             const itemInCart = document.getElementById('itemInCart');
-            console.log(itemInCart.children.length)
             itemInCart.style.display = 'block'
             itemInCart.innerText++;
 
-            // addItemToCart(product);
+            addItemToCart(product);
         })
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
         mainContent.append(productElement)
@@ -157,7 +159,6 @@ function handlePage(pageIndex, limit) {
 
 //* იქმნება სრულიად ქარდ კონტეინერი თავისი აითემით და ტოტალით
 function addItemToCart(product) {
-    const cartContainer = document.createElement('div');
     const item = document.createElement('div');
     const itemImg = document.createElement('img');
     const itemTitle = document.createElement('div');
@@ -174,37 +175,19 @@ function addItemToCart(product) {
     const itemLine = document.createElement('div');
     item.append(itemImg, itemTitle, itemCount, itemCurrency, itemPrice, itemDelete, itemLine);
 
-
-    const itemTotal = document.createElement('div');
-    const itemTotalText = document.createElement('div');
-    // const itemTotalCount = document.createElement('div');
-    // const itemTotalText2 = document.createElement('div');
-    const itemTotalCurrency = document.createElement('img');
-    const itemTotalPrice = document.createElement('div');
-    const itemTotalBtn = document.createElement('button');
-    itemTotal.append(itemTotalText, itemTotalCurrency, itemTotalPrice, itemTotalBtn);
-
     //class name's
-    cartContainer.classList.add('cart-container');
     item.classList.add('item');
     itemImg.classList.add('item-img');
     itemTitle.classList.add('item-title');
     itemPrice.classList.add('item-price');
     itemDelete.classList.add('item-delete');
-    itemTotal.classList.add('item-total');
+
+    // itemTotal.classList.add('item-total');
     itemCount.classList.add('item-count');
     itemCountMinus.classList.add('item-count-minus');
     itemCountText.classList.add('item-count-text');
     itemCountPlus.classList.add('item-count-plus');
     itemCurrency.classList.add('item-currency')
-
-    itemTotal.classList.add('item-total')
-    itemTotalText.classList.add('item-total-text');
-    // itemTotalCount.classList.add('item-total-count');
-    // itemTotalText2.classList.add('item-total-text2');
-    itemTotalCurrency.classList.add('item-total-currency');
-    itemTotalPrice.classList.add('item-total-price');
-    itemTotalBtn.classList.add('item-total-btn');
 
     // assign values
     itemImg.src = product.images[0];
@@ -216,31 +199,42 @@ function addItemToCart(product) {
     itemCountPlus.src = `/img/plus.png`;
     itemCurrency.src = '/img/dollar.png'
 
+}
+function renderCart() {
+    const cartContainer = document.createElement('div');
+    cartContainer.classList.add('cart-container');
+    cartContainer.append(item);
 
-    // itemTotalText.innerText='';
-    // itemTotalCount.innerText='';
+    mainContent.innerText = '';
+    mainContent.append(cartContainer)
+
+    const itemTotal = document.createElement('div');
+    const itemTotalText = document.createElement('div');
+    const itemTotalCurrency = document.createElement('img');
+    const itemTotalPrice = document.createElement('div');
+    const itemTotalBtn = document.createElement('button');
+    itemTotal.append(itemTotalText, itemTotalCurrency, itemTotalPrice, itemTotalBtn);
+    itemTotalText.classList.add('item-total-text');
+    itemTotalCurrency.classList.add('item-total-currency');
+    itemTotalPrice.classList.add('item-total-price');
+    itemTotalBtn.classList.add('item-total-btn');
     itemTotalText.innerText = `Total (` + 0 + ` items): `;
     itemTotalCurrency.src = '/img/dollar.png';
     itemTotalPrice.innerText = product.price;
     itemTotalBtn.innerText = 'Pay Now';
-
-    cartContainer.append(item, itemTotal);
-    // console.log(product)
-    mainContent.innerText = '';
-    mainContent.append(cartContainer)
-
-    // assign(cartContainer)
-    // ProductData(product.images[0],title,price,product)
-
 }
+function renderEmptyCart() {
+    const emptyCart = document.createElement('div');
+    const emptyCartImg = document.createElement('img');
+    const emptyCartText = document.createElement('p');
+    emptyCartText.innerText = 'Cart is empty';
+    emptyCart.classList.add('empty-cart');
 
-// function assign(cartContainer) {
-//     const container = document.getElementById('container');
-//     const containerWrapper = document.getElementById('containerWrapper')
-// containerWrapper.remove();
-// container.insertBefore(cartContainer, container.children[1]);
-// }
-
+    emptyCart.append(emptyCartImg, emptyCartText);
+    emptyCartImg.src = '/img/empty-cart.png';
+    mainContent.innerText = '';
+    mainContent.append(emptyCart)
+}
 
 btnSearch.addEventListener('click', () => {
     const searchInput = document.getElementById('searchInput').value;
@@ -324,31 +318,20 @@ imgLogo2.addEventListener('click', () => {
 
 const btnCart = document.getElementById('btnCart');
 btnCart.addEventListener('click', () => {
-    renderCart();
+    openCart();
 })
 
 //* არენდერებს ქართ კონტეინერს ლოგიკით, თუ ცარიელია გამოიტანს სურათს თუ არა დახატავს ქართს
-function renderCart() {
+function openCart() {
     const cartContainer = document.getElementsByClassName('cart-container');
-    // console.log(emptyCart.length)
-    if (cartContainer.length == '0') {
-        const emptyCart = document.createElement('div');
-        const emptyCartImg = document.createElement('img');
-        const emptyCartText = document.createElement('p');
-        emptyCartText.innerText = 'Cart is empty';
-        emptyCart.classList.add('empty-cart');
-
-        emptyCart.append(emptyCartImg, emptyCartText);
-        emptyCartImg.src = '/img/empty-cart.png';
-        mainContent.innerText = '';
-        mainContent.append(emptyCart)
+    if (cartContainer.length === 0) {
+        renderEmptyCart();
+        console.log('0')
     } else {
-        console.log(cartContainer.length)
-        itemCountText.innerText = cartContainer.length;
+        renderCart();
+        console.log('more');
+
     }
-
-
-
 
 }
 
