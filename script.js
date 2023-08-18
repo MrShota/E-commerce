@@ -2,6 +2,8 @@ const mainContent = document.getElementById('mainContent');
 const btnSearch = document.getElementById('btnSearch');
 const cartContainer = document.createElement('div');
 const itemsContainer = document.createElement('div');
+let totalItemCounter;
+// itemCounter.innerText.style.color = 'red';
 
 // let itemsInCartArray = [];
 // itemsInCartArray.forEach(rendItem)
@@ -220,8 +222,9 @@ function addItemToCart(product) {
 
     //* აითემების რაოდენობა ქართში
     const itemInCart = document.getElementById('itemInCart');
-    itemInCart.style.display = 'block'
-    itemInCart.innerText = itemsContainer.children.length + 1;
+    itemInCart.style.display = 'block';
+    totalItemCounter = itemsContainer.children.length + 1;
+    itemInCart.innerText = totalItemCounter;
 
     console.log(itemsContainer.children.length + 1)
 
@@ -265,20 +268,32 @@ function addItemToCart(product) {
     itemPrice.innerText = product.price;
     itemDelete.src = '/img/delete.png';
     itemCountMinus.src = '/img/minus.png'
-    itemCountText.innerText = '';
+    itemCountText.innerText = '1';
     itemCountPlus.src = `/img/plus.png`;
     itemCurrency.src = '/img/dollar.png';
-    // itemsInCartArray.push(item)
-    // console.log(itemsInCartArray[0].childNodes[1].innerText)
     itemsContainer.append(item)
 
+    itemCountPlus.addEventListener('click', () => {
+        itemCountText.innerText++;
+        itemPrice.innerText = product.price * itemCountText.innerText;
+    })
+    itemCountMinus.addEventListener('click', () => {
+        itemCountText.innerText--;
+        itemPrice.innerText = itemCountText.innerText / product.price;
+    })
 
+}
+function plusFunction(itemCountText, product) {
 
+    let item = itemCountText.innerText
+    let price = product.price
+
+    item = item++;
+    price = price * 2;
 }
 //=========================== 
 function renderCart() {
     mainContent.innerText = '';
-
     mainContent.classList.add('main-content-scroll')
     cartContainer.classList.add('cart-container');
 
@@ -295,11 +310,11 @@ function renderCart() {
     totalCurrency.classList.add('total-currency');
     totalPrice.classList.add('total-price');
     totalBtn.classList.add('total-btn');
-    totalText.innerText = `Total (` + 0 + ` items): `;
+
+    totalText.innerText = `Total (` + totalItemCounter + ` items): `;
     totalCurrency.src = '/img/dollar.png';
     // totalPrice.innerText = product.price;
     totalBtn.innerText = 'Pay Now';
-
 
 
     total.append(totalText, totalCurrency, totalPrice, totalBtn);
