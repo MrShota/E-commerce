@@ -1,9 +1,13 @@
 const mainContent = document.getElementById('mainContent');
 const btnSearch = document.getElementById('btnSearch');
-// const cartContainer = document.createElement('div');
-const item = document.createElement('div');
+const cartContainer = document.createElement('div');
+const itemsContainer = document.createElement('div');
 
-
+// let itemsInCartArray = [];
+// itemsInCartArray.forEach(rendItem)
+// function rendItem(index, item) {
+//     console.log(index, item)
+// }
 getProductsFromServer(12, 0);
 
 //===========================
@@ -118,6 +122,7 @@ function renderProducts(products) {
         })
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
         mainContent.append(productElement)
+        productData = product;
     }
 }
 //===========================
@@ -219,10 +224,11 @@ function addItemToCart(product) {
     itemInCart.innerText++;
 
 
-    const cartContainer = document.createElement('div');
-    cartContainer.classList.add('cart-container');
+
 
     //item
+    // const itemContainer = document.createElement('div');
+
     const item = document.createElement('div');
 
     const itemImg = document.createElement('img');
@@ -237,7 +243,9 @@ function addItemToCart(product) {
     const itemDelete = document.createElement('img');
     const itemLine = document.createElement('div');
     item.append(itemImg, itemTitle, itemCount, itemCurrency, itemPrice, itemDelete, itemLine);
+    // itemContainer.append(item);
 
+    // itemContainer.classList.add('item-container');
     item.classList.add('item');
     itemImg.classList.add('item-img');
     itemTitle.classList.add('item-title');
@@ -251,47 +259,53 @@ function addItemToCart(product) {
 
 
     //* ველიუს მინიჭება მგონი სხვაგან უბდა
+    itemImg.src = product.images[0];
+    itemTitle.innerText = product.title;
+    itemPrice.innerText = product.price;
     itemDelete.src = '/img/delete.png';
     itemCountMinus.src = '/img/minus.png'
     itemCountText.innerText = '';
     itemCountPlus.src = `/img/plus.png`;
     itemCurrency.src = '/img/dollar.png';
+    // itemsInCartArray.push(item)
+    // console.log(itemsInCartArray[0].childNodes[1].innerText)
+    itemsContainer.append(item)
 
-    itemImg.src = product.images[0];
-    itemTitle.innerText = product.title;
-    itemPrice.innerText =product.price;
 
-    //total
+
+}
+//=========================== 
+function renderCart() {
+    mainContent.innerText = '';
+
+    mainContent.classList.add('main-content-scroll')
+    cartContainer.classList.add('cart-container');
+
+    itemsContainer.classList.add('items-container')
     const total = document.createElement('div');
+    total.classList.add('total')
 
     const totalText = document.createElement('div');
     const totalCurrency = document.createElement('img');
     const totalPrice = document.createElement('div');
     const totalBtn = document.createElement('button');
-    totalText.classList.add('item-total-text');
-    totalCurrency.classList.add('item-total-currency');
-    totalPrice.classList.add('item-total-price');
-    totalBtn.classList.add('item-total-btn');
+
+    totalText.classList.add('total-text');
+    totalCurrency.classList.add('total-currency');
+    totalPrice.classList.add('total-price');
+    totalBtn.classList.add('total-btn');
     totalText.innerText = `Total (` + 0 + ` items): `;
     totalCurrency.src = '/img/dollar.png';
-    totalPrice.innerText = product.price;
+    // totalPrice.innerText = productData.price;
     totalBtn.innerText = 'Pay Now';
+
+
+
     total.append(totalText, totalCurrency, totalPrice, totalBtn);
+    cartContainer.append(itemsContainer, total);
+    mainContent.append(cartContainer);
 
-    cartContainer.append(item, total);
-
-
-    mainContent.innerText = '';
-    mainContent.append(cartContainer)
-  
-    // itemData.img = product.images[0];
-    // itemData.title = product.title;
-    // itemData.price = product.price;
-}
-//=========================== 
-// function renderCart(product) {
-   
-// };
+};
 function renderEmptyCart() {
     const emptyCart = document.createElement('div');
     const emptyCartImg = document.createElement('img');
@@ -306,24 +320,16 @@ function renderEmptyCart() {
 }
 //===========================
 
-function addItemToCart(product) {
-
-    //* აითემების რაოდენობა ქართში
-    const itemInCart = document.getElementById('itemInCart');
-    itemInCart.style.display = 'block'
-    itemInCart.innerText++;
-
-}
-
-
 const btnCart = document.getElementById('btnCart');
-btnCart.addEventListener('click', () => {
-    openCart();
-})
+if (btnCart) {
+    btnCart.addEventListener('click', () => {
+        openCart();
+    })
+}
 //* არენდერებს ქართ კონტეინერს ლოგიკით, თუ ცარიელია გამოიტანს სურათს თუ არა დახატავს ქართს
 function openCart() {
-    if (item.children.length === 0) {
-        // renderEmptyCart();
+    if (itemsContainer.children.length === 0) {
+        renderEmptyCart();
         console.log('0')
     } else {
         renderCart();
