@@ -74,20 +74,22 @@ body {
 }
 
 .btn-cart {
+    width: 45px;
+    height: 45px;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
 #itemInCart {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     position: absolute;
     text-align: center;
     border-radius: 50%;
-    font-size: .9rem;
+    font-size: .8rem;
     top: 6px;
-    right: 255px;
+    right: 265px;
     color: white;
     background-color: var(--instagram);
     border: none;
@@ -187,6 +189,7 @@ body {
     margin: 10px;
     border-radius: 8px;
 }
+
 
 .main-content-scroll {
     height: 150vh;

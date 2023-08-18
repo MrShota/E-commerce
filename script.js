@@ -221,8 +221,9 @@ function addItemToCart(product) {
     //* აითემების რაოდენობა ქართში
     const itemInCart = document.getElementById('itemInCart');
     itemInCart.style.display = 'block'
-    itemInCart.innerText++;
+    itemInCart.innerText = itemsContainer.children.length + 1;
 
+    console.log(itemsContainer.children.length + 1)
 
 
 
@@ -296,7 +297,7 @@ function renderCart() {
     totalBtn.classList.add('total-btn');
     totalText.innerText = `Total (` + 0 + ` items): `;
     totalCurrency.src = '/img/dollar.png';
-    // totalPrice.innerText = productData.price;
+    // totalPrice.innerText = product.price;
     totalBtn.innerText = 'Pay Now';
 
 
@@ -321,20 +322,36 @@ function renderEmptyCart() {
 //===========================
 
 const btnCart = document.getElementById('btnCart');
-if (btnCart) {
+
+// if(btnCart){
+//     btnCart.setAttribute('id', 'open')
+//     openCart();
+//     if(btnCart.className === 'open'){
+//         console.log('closed')
+//     }
+
+// }
+
+
+
+btnCart.addEventListener('click', () => {
+    openCart();
+    // btnCart.setAttribute('class', 'opened');
     btnCart.addEventListener('click', () => {
-        openCart();
+        console.log('closed')
+        // break openCart;
+
     })
-}
+
+})
+
+
 //* არენდერებს ქართ კონტეინერს ლოგიკით, თუ ცარიელია გამოიტანს სურათს თუ არა დახატავს ქართს
 function openCart() {
     if (itemsContainer.children.length === 0) {
         renderEmptyCart();
-        console.log('0')
     } else {
         renderCart();
-        console.log('more');
-
     }
 
 }
