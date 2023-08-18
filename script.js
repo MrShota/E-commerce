@@ -3,13 +3,7 @@ const btnSearch = document.getElementById('btnSearch');
 const cartContainer = document.createElement('div');
 const itemsContainer = document.createElement('div');
 let totalItemCounter;
-// itemCounter.innerText.style.color = 'red';
 
-// let itemsInCartArray = [];
-// itemsInCartArray.forEach(rendItem)
-// function rendItem(index, item) {
-//     console.log(index, item)
-// }
 getProductsFromServer(12, 0);
 
 //===========================
@@ -226,9 +220,6 @@ function addItemToCart(product) {
     totalItemCounter = itemsContainer.children.length + 1;
     itemInCart.innerText = totalItemCounter;
 
-    console.log(itemsContainer.children.length + 1)
-
-
 
     //item
     // const itemContainer = document.createElement('div');
@@ -274,12 +265,28 @@ function addItemToCart(product) {
     itemsContainer.append(item)
 
     itemCountPlus.addEventListener('click', () => {
-        itemCountText.innerText++;
-        itemPrice.innerText = product.price * itemCountText.innerText;
+        if (itemCountText.innerText <= '1') {
+
+            itemCountText.innerText++;
+            itemPrice.innerText = product.price * itemCountText.innerText;
+            totalItemCounter++; // აქ ვერ დავააფდეითე ტოტალ აითემ ქაუნთერი
+            console.log(totalItemCounter)
+        } else {
+            console.log('more');
+
+        }
     })
     itemCountMinus.addEventListener('click', () => {
-        itemCountText.innerText--;
-        itemPrice.innerText = itemCountText.innerText / product.price;
+        if (itemCountText.innerText > '1') {
+
+            itemCountText.innerText--;
+            itemPrice.innerText = product.price / itemCountText.innerText;
+            totalItemCounter--;// აქ ვერ დავააფდეითე ტოტალ აითემ ქაუნთერი
+            console.log(totalItemCounter)
+
+        } else {
+            console.log('less')
+        }
     })
 
 }
