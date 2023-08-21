@@ -385,7 +385,7 @@ body {
 .cart-container::before {
     content: 'My Cart';
     position: relative;
-    width: 130px;
+    width: 200px;
     height: 60px;
     left: 50px;
     top: 50px;
@@ -400,6 +400,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 100px;
+    margin-right: 70px;
 }
 
 .item {
@@ -455,6 +456,7 @@ body {
 .item-count-text {
     width: 20px;
     height: 20px;
+    color: red;
     /* margin-left:-80px; */
 }
 
@@ -467,13 +469,18 @@ body {
     font-style: oblique;
 } */
 
-.item-count-minus,
-.item-count-plus,
+
 .item-currency {
     width: 18px;
-    height: 20px;
-    cursor: pointer;
 
+}
+
+
+.item-count-minus,
+.item-count-plus {
+    width: 18px;
+    /* height: 17px; */
+    cursor: pointer;
 }
 
 .item-currency {
@@ -488,6 +495,7 @@ body {
     width: 25px;
     height: 25px;
     margin-left: 50px;
+    cursor: pointer;
 
 }
 

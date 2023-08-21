@@ -218,6 +218,7 @@ function addItemToCart(product) {
     const itemInCart = document.getElementById('itemInCart');
     itemInCart.style.display = 'block';
     totalItemCounter = itemsContainer.children.length + 1;
+
     itemInCart.innerText = totalItemCounter;
 
 
@@ -289,7 +290,18 @@ function addItemToCart(product) {
         }
     })
 
+
+    itemDelete.addEventListener('click',()=>{
+        deleteItemFromCart(item);
+
+    })
+
 }
+function deleteItemFromCart(item) {
+    item.remove();
+}
+
+
 function plusFunction(itemCountText, product) {
 
     let item = itemCountText.innerText
