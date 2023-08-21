@@ -65,7 +65,7 @@ function renderProductByCategory(productByCategory) {
             const itemInCart = document.getElementById('itemInCart');
             itemInCart.style.display = 'block'
             itemInCart.innerText++;
-            // addItemToCart(product);
+            addItemToCart(product);
         })
 
         productElement.append(productImg, productTitle, productPrice, productDescription, addBtn);
