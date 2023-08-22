@@ -20,6 +20,7 @@ function renderCategories(categories) {
         const categoryElement = document.createElement('div');
         categoryElement.innerText = category;
         categoryElement.classList.add('category-element');
+        categoryElement.setAttribute('id', 'categoryElement')
         const line = document.createElement('div');
         line.classList.add('line');
         categoryList.append(categoryElement, line);
@@ -431,12 +432,14 @@ imgLogo2.addEventListener('click', () => {
 })
 
 // const menu = document.getElementById('menu');
-menu.addEventListener('click', openMenu);
+menu.addEventListener('click', () => {
+    const aside = document.getElementById('aside');
+    aside.setAttribute('id', 'active');
+    openMenu()
+    console.log(aside)
+
+});
 
 function openMenu() {
-    const aside = document.getElementById('aside');
     aside.style.display = 'block';
 }
-
-
-
