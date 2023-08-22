@@ -773,8 +773,29 @@ body {
         display: block;
     }
 
+
     .aside {
         display: none;
+        position: absolute;
+        width: 160px;
+        animation-name: showMenu;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+    }
+    .aside:before{
+        content: 'X';
+        position: relative;
+        left: 135px;
+        color: red;
+    }
+
+    @keyframes showMenu {
+        0%{
+            margin-left: -200px;
+        }
+        100%{
+            margin-left: 0px;
+        }
     }
 
     .header {
@@ -896,8 +917,17 @@ body {
     .paging {
         width: 50%;
     }
-    .menu{
-        
+
+    .menu {
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        display: block;
+        position: relative;
+        right: 170px;
+        top: -10px;
+        /* background-color: red; */
     }
+
 
 }

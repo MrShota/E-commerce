@@ -430,8 +430,14 @@ imgLogo2.addEventListener('click', () => {
 
 })
 
+const menu = document.getElementById('menu');
+menu.addEventListener('click', openMenu);
 
-
+function openMenu() {
+    const aside = document.getElementById('aside');
+    console.log('works')
+    aside.style.display = 'block';
+}
 
 
 
