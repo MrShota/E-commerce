@@ -667,13 +667,17 @@ body {
     }
 }
 
-@media (max-width:769px) {
+@media (max-width:768px) {
     #itemInCart {
         right: 80px;
     }
 
-    .aside {
-        /* font-size: 10px; */
+    .category-element {
+        font-size: .9rem;
+        height:20px ;
+    }
+    .line{
+        height: 1px;
     }
 
     .forAds {
@@ -751,5 +755,10 @@ body {
 
     .total-btn {
         width: 100%;
+    }
+      
+    .empty-cart>img {
+        width: 400px;
+        margin-top: 50px;
     }
 }
