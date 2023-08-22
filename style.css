@@ -786,6 +786,7 @@ body {
         content: 'X';
         position: relative;
         left: 135px;
+        top:-5px;
         color: red;
     }
 
