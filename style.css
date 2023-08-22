@@ -666,55 +666,18 @@ body {
         width: 100%;
     }
 }
-@media (max-width:768px) {
-    .header {
-        height: 40px;
 
-    }
-
-    .img-logo {
-        width: 33px;
-        height: 33px;
-        margin-top: 5px;
-    }
-
-    .search {
-        height: 25px;
-        /* border-radius: 8px; */
-        /* border: none; */
-        /* padding-inline: 5px; */
-        /* outline: none; */
-    }
-
-    .btn-search {
-        height: 26px;
-        width: 60px;
-        font-size: .8rem;
-    }
-
-    .material-symbols-outlined {
-        font-variation-settings:
-            'FILL' 0,
-            'wght' 300,
-            'GRAD' 0,
-            'opsz' 48
-    }
-
+@media (max-width:769px) {
     #itemInCart {
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        font-size: .7rem;
-        top: 3px;
-        right: 120px;
+        right: 80px;
     }
 
     .aside {
-        /* font-size: .8rem; */
+        /* font-size: 10px; */
     }
 
     .forAds {
-        font-size: 1rem;
+        font-size: .8rem;
     }
 
     .line {
@@ -722,60 +685,39 @@ body {
     }
 
     .product-element {
-        width: 20%;
-        height: 320px;
-
-        padding: 7px;
-        margin: 20px 15px 0px;
-
-    }
-
-    .product-img {
-        height: 30%;
-        object-fit: contain;
+        width: 27%;
     }
 
     .product-title {
-        height: 10%;
-        font-size: .9rem;
-        padding: 5px 10px;
-    }
-
-    .product-price {
-        font-size: 1rem;
-    }
-
-    .product-description {
-        height: 45%;
-        font-size: .9rem;
-        overflow: hidden;
+        height: 12%;
+        font-size: .8rem;
     }
 
     .add-btn {
-        width: 75px;
-        font-size: .8rem;
-        margin-left: 40%;
-        /* margin-top: 50px; */
+        font-size: .7rem;
     }
 
     .footer {
-        height: 70px;
+        height: 50px;
+        font-size: .9rem;
+    }
+
+    .social>* {
+        font-size: 1.2rem;
     }
 
     .cart-container {
+        width: 95%;
         display: flex;
         flex-direction: column;
     }
 
     .items-container {
-        width: 100%;
-        height: 90%;
-        margin-top: 50px;
-        margin-right: 0px;
+          font-size: .9rem;
     }
 
     .item {
-        height: 100px;
+        height: 90px;
     }
 
     .total {
@@ -786,12 +728,12 @@ body {
     }
 
     .item-count {
-        width: 130px;
-        margin-left: 35px;
+        width: 140px;
+        margin-left: 5px;
     }
 
     .item-currency {
-        margin-left: 50px;
+        margin-left: 20px;
     }
 
     .item-price {
@@ -799,8 +741,8 @@ body {
     }
 
     .item-delete {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
     }
 
     .total-text {
