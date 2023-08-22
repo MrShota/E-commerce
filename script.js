@@ -217,7 +217,7 @@ function addItemToCart(product) {
     //* აითემების რაოდენობა ქართში
     const itemInCart = document.getElementById('itemInCart');
     itemInCart.style.display = 'block';
-   
+
 
 
     //item
@@ -300,6 +300,9 @@ function addItemToCart(product) {
 
         item.remove();
         itemInCart.innerText = itemInCart.innerText - itemCountText.innerText;
+        if (itemsContainer.children.length === 0) {
+            openCart();
+        }
 
 
 
@@ -353,10 +356,10 @@ function renderEmptyCart() {
     const emptyCart = document.createElement('div');
     const emptyCartImg = document.createElement('img');
     const emptyCartText = document.createElement('p');
-    emptyCartText.innerText = 'Cart is empty';
+    emptyCartText.innerText = 'Cart is empty.';
     emptyCart.classList.add('empty-cart');
 
-    emptyCart.append(emptyCartImg, emptyCartText);
+    emptyCart.append(emptyCartText, emptyCartImg);
     emptyCartImg.src = '/img/empty-cart.png';
     mainContent.innerText = '';
     mainContent.append(emptyCart)
