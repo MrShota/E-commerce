@@ -778,29 +778,35 @@ body {
         display: none;
         position: absolute;
         width: 160px;
+
+    }
+
+    .aside-open {
         animation-name: showMenu;
         animation-duration: .5s;
         animation-timing-function: linear;
     }
-    .aside:before{
-        content: 'X';
-        position: relative;
-        left: 135px;
-        top:-5px;
-        color: red;
-    }
 
     @keyframes showMenu {
-        0%{
+        0% {
             margin-left: -200px;
         }
-        100%{
+
+        100% {
             margin-left: 0px;
         }
     }
 
+    .menu-close-btn {
+        position: relative;
+        left: 135px;
+        top: -5px;
+        color: red;
+    }
+
+
     .header {
-        /* height: 40px; */
+        z-index: 1;
 
     }
 

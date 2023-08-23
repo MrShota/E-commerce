@@ -433,13 +433,27 @@ imgLogo2.addEventListener('click', () => {
 
 // const menu = document.getElementById('menu');
 menu.addEventListener('click', () => {
-    const aside = document.getElementById('aside');
-    aside.setAttribute('id', 'active');
     openMenu()
-    console.log(aside)
 
 });
 
 function openMenu() {
+    const aside = document.getElementById('aside');
     aside.style.display = 'block';
+    aside.classList.add('aside-open');
+    const menuCloseBtn = document.createElement('div');
+    menuCloseBtn.classList.add('menu-close-btn')
+    menuCloseBtn.innerText = 'X';
+    aside.prepend(menuCloseBtn);
+
+    menuCloseBtn.addEventListener('click', () => {
+        closeMenu(menuCloseBtn)
+    });
+}
+function closeMenu(menuCloseBtn) {
+    menuCloseBtn.innerText = '';
+    aside.style.display = 'none';
+
+
+
 }
