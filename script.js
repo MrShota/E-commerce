@@ -447,6 +447,7 @@ function openMenu() {
     aside.prepend(menuCloseBtn);
 
     menuCloseBtn.addEventListener('click', () => {
+
         closeMenu(menuCloseBtn)
     });
 }
@@ -457,3 +458,8 @@ function closeMenu(menuCloseBtn) {
 
 
 }
+// searchIcon.addEventListener('click', openSearch);
+// function openSearch() {
+//     searchIcon.remove();
+//     search.style.display = 'block'
+// }
