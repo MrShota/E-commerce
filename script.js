@@ -213,6 +213,7 @@ function renderSearchProduct(input) {
     //=========================== 
 }
 //=========================== 
+let itemPrice;
 function addItemToCart(product) {
 
     //* აითემების რაოდენობა ქართში
@@ -256,6 +257,7 @@ function addItemToCart(product) {
     itemImg.src = product.images[0];
     itemTitle.innerText = product.title;
     itemPrice.innerText = product.price;
+    console.log(itemPrice)
     itemDelete.src = '/img/delete.png';
     itemCountMinus.src = '/img/minus.png'
     itemCountText.innerText = '1';
@@ -343,9 +345,14 @@ function renderCart() {
 
     totalText.innerText = `Total (` + totalItemCounter + ` items): `;
     totalCurrency.src = '/img/dollar.png';
-    // totalPrice.innerText =itemsContainer ;
-    // console.log(itemsContainer.itemCountText)
     totalBtn.innerText = 'Pay Now';
+
+    totalPrice.innerText = itemsContainer.children[0].children[4].innerText;
+    // console.log(itemsContainer.children[0].children[4].innerText)
+
+
+
+    // console.log(itemsPrice)
 
 
     total.append(totalText, totalCurrency, totalPrice, totalBtn);
@@ -367,18 +374,7 @@ function renderEmptyCart() {
 }
 //===========================
 
-const btnCart = document.getElementById('btnCart');
-
-// if(btnCart){
-//     btnCart.setAttribute('id', 'open')
-//     openCart();
-//     if(btnCart.className === 'open'){
-//         console.log('closed')
-//     }
-
-// }
-
-
+// const btnCart = document.getElementById('btnCart');
 
 btnCart.addEventListener('click', () => {
     openCart();
@@ -402,21 +398,12 @@ function openCart() {
 
 }
 
-
-
-
-
-
 btnSearch.addEventListener('click', () => {
     const searchInput = document.getElementById('searchInput').value;
     // console.log(searchInput);
     renderSearchProduct(searchInput);
 
 })
-
-
-
-
 
 const imgLogo = document.getElementById('imgLogo');
 imgLogo.addEventListener('click', () => {
@@ -438,6 +425,7 @@ menu.addEventListener('click', () => {
 });
 
 function openMenu() {
+
     const aside = document.getElementById('aside');
     aside.style.display = 'block';
     aside.classList.add('aside-open');
@@ -447,6 +435,7 @@ function openMenu() {
     aside.prepend(menuCloseBtn);
 
     menuCloseBtn.addEventListener('click', () => {
+        menuCloseBtn.innerText = '';
 
         closeMenu(menuCloseBtn)
     });
@@ -458,8 +447,3 @@ function closeMenu(menuCloseBtn) {
 
 
 }
-// searchIcon.addEventListener('click', openSearch);
-// function openSearch() {
-//     searchIcon.remove();
-//     search.style.display = 'block'
-// }

@@ -403,6 +403,7 @@ body {
     left: 50px;
     top: 50px;
     font-size: 1.8rem;
+    z-index: 1;
 
 }
 
@@ -815,7 +816,7 @@ body {
 
 
     .header {
-        z-index: 1;
+        z-index: 999;
 
     }
 
