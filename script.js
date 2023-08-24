@@ -295,9 +295,6 @@ function addItemToCart(product) {
         if (itemsContainer.children.length === 0) {
             openCart();
         }
-
-
-
     })
 
 }
