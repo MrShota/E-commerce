@@ -359,7 +359,6 @@ btnCart.addEventListener('click', () => {
 
 })
 
-
 //* არენდერებს ქართ კონტეინერს ლოგიკით, თუ ცარიელია გამოიტანს სურათს თუ არა დახატავს ქართს
 function openCart() {
     if (itemsContainer.children.length === 0) {
