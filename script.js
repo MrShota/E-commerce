@@ -244,10 +244,15 @@ function addItemToCart(product) {
     itemPrice.innerText = product.price;
     console.log(itemPrice)
     itemDelete.src = '/img/delete.png';
+    itemDelete.alt='delete'
     itemCountMinus.src = '/img/minus.png'
+    itemDelete.alt='remove'
     itemCountText.innerText = '1';
     itemCountPlus.src = `/img/plus.png`;
+    itemDelete.alt='add'
     itemCurrency.src = '/img/dollar.png';
+    itemDelete.alt='currency dollar'
+
     itemsContainer.append(item)
 
     totalItemCounter = itemsContainer.children.length;
