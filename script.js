@@ -124,7 +124,6 @@ function renderProducts(products) {
 }
 //===========================
 function paging(totalCount, limit) {
-    // const containerWrapper = document.getElementById('containerWrapper');
     const paging = document.createElement('div');
     paging.classList.add('paging')
 
@@ -136,7 +135,6 @@ function paging(totalCount, limit) {
 
         pagingElement.addEventListener('click', () => {
             handlePage(pageIndex, limit);
-            // pagingElement.style.color='red'
         })
         paging.append(pagingElement);
     }
@@ -144,8 +142,6 @@ function paging(totalCount, limit) {
     mainContent.append(paging);
 }
 function handlePage(pageIndex, limit) {
-
-    // const mainContent = document.getElementById('mainContent');
     mainContent.innerText = '';
     const skip = (pageIndex - 1) * limit
     getProductsFromServer(limit, skip)
@@ -158,14 +154,11 @@ function renderSearchProduct(input) {
         .then(res => res.json())
         .then(data => {
             const searchElement = data.products;
-            // console.log(searchElement.length)
 
             if (searchElement.length > 1) {
                 console.log(data)
                 for (let products of searchElement) {
                     mainContent.style.color = 'black';
-
-                    // console.log(productByCategory)
                     const productElement = document.createElement('div');
                     const productTitle = document.createElement('div');
                     const productImg = document.createElement('img');
@@ -220,11 +213,6 @@ function addItemToCart(product) {
     const itemInCart = document.getElementById('itemInCart');
     itemInCart.style.display = 'block';
 
-
-
-    //item
-    // const itemContainer = document.createElement('div');
-
     const item = document.createElement('div');
 
     const itemImg = document.createElement('img');
@@ -239,9 +227,7 @@ function addItemToCart(product) {
     const itemDelete = document.createElement('img');
     const itemLine = document.createElement('div');
     item.append(itemImg, itemTitle, itemCount, itemCurrency, itemPrice, itemDelete, itemLine);
-    // itemContainer.append(item);
 
-    // itemContainer.classList.add('item-container');
     item.classList.add('item');
     itemImg.classList.add('item-img');
     itemTitle.classList.add('item-title');
@@ -252,7 +238,6 @@ function addItemToCart(product) {
     itemCountText.classList.add('item-count-text');
     itemCountPlus.classList.add('item-count-plus');
     itemCurrency.classList.add('item-currency')
-
 
     itemImg.src = product.images[0];
     itemTitle.innerText = product.title;
@@ -267,7 +252,6 @@ function addItemToCart(product) {
 
     totalItemCounter = itemsContainer.children.length;
     itemInCart.innerText = totalItemCounter;
-    // console.log(itemCountText.innerText)
 
     itemCountPlus.addEventListener('click', () => {
         if (itemCountText.innerText <= '1') {
@@ -313,8 +297,6 @@ function addItemToCart(product) {
 
 }
 
-
-
 function plusFunction(itemCountText, product) {
 
     let item = itemCountText.innerText
@@ -348,13 +330,7 @@ function renderCart() {
     totalBtn.innerText = 'Pay Now';
 
     totalPrice.innerText = itemsContainer.children[0].children[4].innerText;
-    // console.log(itemsContainer.children[0].children[4].innerText)
-
-
-
-    // console.log(itemsPrice)
-
-
+  
     total.append(totalText, totalCurrency, totalPrice, totalBtn);
     cartContainer.append(itemsContainer, total);
     mainContent.append(cartContainer);
@@ -374,15 +350,11 @@ function renderEmptyCart() {
 }
 //===========================
 
-// const btnCart = document.getElementById('btnCart');
 
 btnCart.addEventListener('click', () => {
     openCart();
-    // btnCart.setAttribute('class', 'opened');
     btnCart.addEventListener('click', () => {
         console.log('closed')
-        // break openCart;
-
     })
 
 })
@@ -400,28 +372,22 @@ function openCart() {
 
 btnSearch.addEventListener('click', () => {
     const searchInput = document.getElementById('searchInput').value;
-    // console.log(searchInput);
     renderSearchProduct(searchInput);
-
 })
 
 const imgLogo = document.getElementById('imgLogo');
 imgLogo.addEventListener('click', () => {
     mainContent.innerText = '';
     getProductsFromServer(12, 0);
-
 })
 const imgLogo2 = document.getElementById('imgLogo2');
 imgLogo2.addEventListener('click', () => {
     mainContent.innerText = '';
     getProductsFromServer(12, 0);
-
 })
 
-// const menu = document.getElementById('menu');
 menu.addEventListener('click', () => {
     openMenu()
-
 });
 
 function openMenu() {
@@ -443,7 +409,4 @@ function openMenu() {
 function closeMenu(menuCloseBtn) {
     menuCloseBtn.innerText = '';
     aside.style.display = 'none';
-
-
-
 }
