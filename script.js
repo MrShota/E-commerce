@@ -350,6 +350,7 @@ function renderEmptyCart() {
 
     emptyCart.append(emptyCartText, emptyCartImg);
     emptyCartImg.src = '/img/empty-cart.png';
+    emptyCartImg.alt='empty cart image'
     mainContent.innerText = '';
     mainContent.append(emptyCart)
 }
